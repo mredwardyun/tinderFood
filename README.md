@@ -7,11 +7,11 @@
 6. As a user, I can quickly view pictures, prices and descriptions of food on one page.
 7. As a user, I can post my products and set an area in which i can deliver (restaurant).
 8. "liked" foods to be saved for one click ordering at any time
-9. credit card info stored 
-10. gps info sent to driver
+9. As a user, I can save my credit card info so as to not have to re-enter it every time I get food.
+10. As a user, I can share the gps location of a food with different people.
 11. best selection of food in close proximity
-12. includes price for delivery
-13. menus on tinder profile
+12. As a user, I can see the price of delivery associated with each plate.
+13. As a user, I can access the menu for a restaurant from the restaurant's profile.
 14. delicious profile pictures
 15. try new places
 16. give ideas on what to eat
