@@ -27,3 +27,6 @@
                 features are added and all additionally features should be tested before they are merged into master. Each user story should
                 be tested thoroughly before it is marked as completed and we start the next one
 .. Other stuff: n/a
+
+#Node Backend Repository
+https://github.com/cs4278-2015/tinderFood-node.git
