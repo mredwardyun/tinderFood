@@ -1,0 +1,505 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0C31BF501EE00457024 /* AppDelegate.swift */; };
+		8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0C51BF501EE00457024 /* FoodViewController.swift */; };
+		8027D0C91BF501EE00457024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0C71BF501EE00457024 /* Main.storyboard */; };
+		8027D0CB1BF501EE00457024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CA1BF501EE00457024 /* Assets.xcassets */; };
+		8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */; };
+		8027D0D91BF501EE00457024 /* tinderForFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */; };
+		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8027D0D51BF501EE00457024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8027D0B81BF501EE00457024 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8027D0BF1BF501EE00457024;
+			remoteInfo = tinderForFood;
+		};
+		8027D0E01BF501EE00457024 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8027D0B81BF501EE00457024 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8027D0BF1BF501EE00457024;
+			remoteInfo = tinderForFood;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8027D0C01BF501EE00457024 /* tinderForFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinderForFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027D0C31BF501EE00457024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8027D0C51BF501EE00457024 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
+		8027D0C81BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8027D0CA1BF501EE00457024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8027D0CD1BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8027D0CF1BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8027D0D41BF501EE00457024 /* tinderForFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodTests.swift; sourceTree = "<group>"; };
+		8027D0DA1BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
+		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8027D0BD1BF501EE00457024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027D0D11BF501EE00457024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027D0DC1BF501EE00457024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8027D0B71BF501EE00457024 = {
+			isa = PBXGroup;
+			children = (
+				8027D0C21BF501EE00457024 /* tinderForFood */,
+				8027D0D71BF501EE00457024 /* tinderForFoodTests */,
+				8027D0E21BF501EE00457024 /* tinderForFoodUITests */,
+				8027D0C11BF501EE00457024 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8027D0C11BF501EE00457024 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8027D0C01BF501EE00457024 /* tinderForFood.app */,
+				8027D0D41BF501EE00457024 /* tinderForFoodTests.xctest */,
+				8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8027D0C21BF501EE00457024 /* tinderForFood */ = {
+			isa = PBXGroup;
+			children = (
+				8027D0C31BF501EE00457024 /* AppDelegate.swift */,
+				8027D0C51BF501EE00457024 /* FoodViewController.swift */,
+				8027D0C71BF501EE00457024 /* Main.storyboard */,
+				8027D0CA1BF501EE00457024 /* Assets.xcassets */,
+				8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */,
+				8027D0CF1BF501EE00457024 /* Info.plist */,
+			);
+			path = tinderForFood;
+			sourceTree = "<group>";
+		};
+		8027D0D71BF501EE00457024 /* tinderForFoodTests */ = {
+			isa = PBXGroup;
+			children = (
+				8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */,
+				8027D0DA1BF501EE00457024 /* Info.plist */,
+			);
+			path = tinderForFoodTests;
+			sourceTree = "<group>";
+		};
+		8027D0E21BF501EE00457024 /* tinderForFoodUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */,
+				8027D0E51BF501EE00457024 /* Info.plist */,
+			);
+			path = tinderForFoodUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8027D0BF1BF501EE00457024 /* tinderForFood */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFood" */;
+			buildPhases = (
+				8027D0BC1BF501EE00457024 /* Sources */,
+				8027D0BD1BF501EE00457024 /* Frameworks */,
+				8027D0BE1BF501EE00457024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tinderForFood;
+			productName = tinderForFood;
+			productReference = 8027D0C01BF501EE00457024 /* tinderForFood.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8027D0D31BF501EE00457024 /* tinderForFoodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodTests" */;
+			buildPhases = (
+				8027D0D01BF501EE00457024 /* Sources */,
+				8027D0D11BF501EE00457024 /* Frameworks */,
+				8027D0D21BF501EE00457024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8027D0D61BF501EE00457024 /* PBXTargetDependency */,
+			);
+			name = tinderForFoodTests;
+			productName = tinderForFoodTests;
+			productReference = 8027D0D41BF501EE00457024 /* tinderForFoodTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8027D0DE1BF501EE00457024 /* tinderForFoodUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodUITests" */;
+			buildPhases = (
+				8027D0DB1BF501EE00457024 /* Sources */,
+				8027D0DC1BF501EE00457024 /* Frameworks */,
+				8027D0DD1BF501EE00457024 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8027D0E11BF501EE00457024 /* PBXTargetDependency */,
+			);
+			name = tinderForFoodUITests;
+			productName = tinderForFoodUITests;
+			productReference = 8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8027D0B81BF501EE00457024 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Edward Yun";
+				TargetAttributes = {
+					8027D0BF1BF501EE00457024 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+					8027D0D31BF501EE00457024 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 8027D0BF1BF501EE00457024;
+					};
+					8027D0DE1BF501EE00457024 = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 8027D0BF1BF501EE00457024;
+					};
+				};
+			};
+			buildConfigurationList = 8027D0BB1BF501EE00457024 /* Build configuration list for PBXProject "tinderForFood" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8027D0B71BF501EE00457024;
+			productRefGroup = 8027D0C11BF501EE00457024 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8027D0BF1BF501EE00457024 /* tinderForFood */,
+				8027D0D31BF501EE00457024 /* tinderForFoodTests */,
+				8027D0DE1BF501EE00457024 /* tinderForFoodUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8027D0BE1BF501EE00457024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */,
+				8027D0CB1BF501EE00457024 /* Assets.xcassets in Resources */,
+				8027D0C91BF501EE00457024 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027D0D21BF501EE00457024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027D0DD1BF501EE00457024 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8027D0BC1BF501EE00457024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */,
+				8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027D0D01BF501EE00457024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8027D0D91BF501EE00457024 /* tinderForFoodTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8027D0DB1BF501EE00457024 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8027D0D61BF501EE00457024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8027D0BF1BF501EE00457024 /* tinderForFood */;
+			targetProxy = 8027D0D51BF501EE00457024 /* PBXContainerItemProxy */;
+		};
+		8027D0E11BF501EE00457024 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8027D0BF1BF501EE00457024 /* tinderForFood */;
+			targetProxy = 8027D0E01BF501EE00457024 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8027D0C71BF501EE00457024 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8027D0C81BF501EE00457024 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8027D0CD1BF501EE00457024 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8027D0E61BF501EE00457024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8027D0E71BF501EE00457024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8027D0E91BF501EE00457024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = tinderForFood/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8027D0EA1BF501EE00457024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = tinderForFood/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFood;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8027D0EC1BF501EE00457024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = tinderForFoodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tinderForFood.app/tinderForFood";
+			};
+			name = Debug;
+		};
+		8027D0ED1BF501EE00457024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = tinderForFoodTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tinderForFood.app/tinderForFood";
+			};
+			name = Release;
+		};
+		8027D0EF1BF501EE00457024 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = tinderForFoodUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = tinderForFood;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		8027D0F01BF501EE00457024 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = tinderForFoodUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = tinderForFood;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8027D0BB1BF501EE00457024 /* Build configuration list for PBXProject "tinderForFood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8027D0E61BF501EE00457024 /* Debug */,
+				8027D0E71BF501EE00457024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFood" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8027D0E91BF501EE00457024 /* Debug */,
+				8027D0EA1BF501EE00457024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8027D0EC1BF501EE00457024 /* Debug */,
+				8027D0ED1BF501EE00457024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8027D0EF1BF501EE00457024 /* Debug */,
+				8027D0F01BF501EE00457024 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8027D0B81BF501EE00457024 /* Project object */;
+}
