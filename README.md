@@ -14,7 +14,7 @@
 13. As a user, I can access the menu for a restaurant from the restaurant's profile.
 14. delicious profile pictures
 15. try new places
-16. give ideas on what to eat
+16. As a user, I can see probable match restaurants based on my current matches.
 17. new person in town
 18. right food delivery service
 
