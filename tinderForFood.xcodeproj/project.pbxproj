@@ -14,6 +14,7 @@
 		8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */; };
 		8027D0D91BF501EE00457024 /* tinderForFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */; };
 		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
+		A4CA7450D944C2A6BB0C53A9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246ECA30511E8DE416DAB7B0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		246ECA30511E8DE416DAB7B0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B9CFBD6495AB4DFA34C8A4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8027D0C01BF501EE00457024 /* tinderForFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinderForFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0C31BF501EE00457024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8027D0C51BF501EE00457024 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE6207AA2380D43D79A1FF65 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4CA7450D944C2A6BB0C53A9 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66EB50B0DDB390773DB011C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				246ECA30511E8DE416DAB7B0 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		778E8F2C56A1391FF7B7B0EE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B9CFBD6495AB4DFA34C8A4B /* Pods.debug.xcconfig */,
+				BE6207AA2380D43D79A1FF65 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8027D0B71BF501EE00457024 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +103,8 @@
 				8027D0D71BF501EE00457024 /* tinderForFoodTests */,
 				8027D0E21BF501EE00457024 /* tinderForFoodUITests */,
 				8027D0C11BF501EE00457024 /* Products */,
+				778E8F2C56A1391FF7B7B0EE /* Pods */,
+				66EB50B0DDB390773DB011C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFood" */;
 			buildPhases = (
+				54692D14954AC7DC926330F0 /* Check Pods Manifest.lock */,
 				8027D0BC1BF501EE00457024 /* Sources */,
 				8027D0BD1BF501EE00457024 /* Frameworks */,
 				8027D0BE1BF501EE00457024 /* Resources */,
+				22FB12485C6F6BD96F980731 /* Embed Pods Frameworks */,
+				C5E1ED96D9F150D4AECF8FEE /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -250,6 +277,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22FB12485C6F6BD96F980731 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54692D14954AC7DC926330F0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C5E1ED96D9F150D4AECF8FEE /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8027D0BC1BF501EE00457024 /* Sources */ = {
@@ -395,6 +470,7 @@
 		};
 		8027D0E91BF501EE00457024 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B9CFBD6495AB4DFA34C8A4B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = tinderForFood/Info.plist;
@@ -406,6 +482,7 @@
 		};
 		8027D0EA1BF501EE00457024 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE6207AA2380D43D79A1FF65 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = tinderForFood/Info.plist;
@@ -482,6 +559,7 @@
 				8027D0EA1BF501EE00457024 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +568,7 @@
 				8027D0ED1BF501EE00457024 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +577,7 @@
 				8027D0F01BF501EE00457024 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
