@@ -1,0 +1,6 @@
+framework module Pods_tinderForFood {
+  umbrella header "Pods-tinderForFood-umbrella.h"
+
+  export *
+  module * { export * }
+}

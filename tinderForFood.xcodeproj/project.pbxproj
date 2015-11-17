@@ -14,6 +14,7 @@
 		8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */; };
 		8027D0D91BF501EE00457024 /* tinderForFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */; };
 		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
+		8AA81BBDC4FA43EEAF4B1320 /* Pods_tinderForFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADC1622B3E6D2B9BDF7C54E /* Pods_tinderForFood.framework */; };
 		A4CA7450D944C2A6BB0C53A9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246ECA30511E8DE416DAB7B0 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE6207AA2380D43D79A1FF65 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		FADC1622B3E6D2B9BDF7C54E /* Pods_tinderForFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinderForFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4CA7450D944C2A6BB0C53A9 /* Pods.framework in Frameworks */,
+				8AA81BBDC4FA43EEAF4B1320 /* Pods_tinderForFood.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				246ECA30511E8DE416DAB7B0 /* Pods.framework */,
+				FADC1622B3E6D2B9BDF7C54E /* Pods_tinderForFood.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -291,7 +295,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinderForFood/Pods-tinderForFood-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		54692D14954AC7DC926330F0 /* Check Pods Manifest.lock */ = {
@@ -321,7 +325,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tinderForFood/Pods-tinderForFood-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
