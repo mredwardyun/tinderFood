@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Food View Controller-->
@@ -17,30 +17,116 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe9-b6-5Mp">
-                                <rect key="frame" x="279" y="290" width="42" height="20.5"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0be-PZ-JZ8" userLabel="Top View">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe for Food!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ee7-r1-AGJ">
+                                        <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <animations/>
+                                <color key="backgroundColor" red="0.092490536580000005" green="0.8691065281" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20.5" id="nrt-8O-Jux"/>
+                                    <constraint firstAttribute="bottom" secondItem="ee7-r1-AGJ" secondAttribute="bottom" constant="8" id="F4Q-Cb-QlU">
+                                        <variation key="widthClass=compact" constant="14"/>
+                                    </constraint>
+                                    <constraint firstItem="ee7-r1-AGJ" firstAttribute="top" secondItem="0be-PZ-JZ8" secondAttribute="top" constant="43" id="FNm-7K-Y5D"/>
+                                    <constraint firstAttribute="height" constant="74" id="ZuZ-4Y-wVe"/>
+                                    <constraint firstItem="ee7-r1-AGJ" firstAttribute="centerX" secondItem="0be-PZ-JZ8" secondAttribute="centerX" id="akh-1j-8KZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ee7-r1-AGJ" secondAttribute="trailing" constant="140" id="mYB-ie-W3H"/>
+                                    <constraint firstAttribute="bottom" secondItem="ee7-r1-AGJ" secondAttribute="bottom" constant="9.5" id="sbC-6h-0bW"/>
+                                    <constraint firstItem="ee7-r1-AGJ" firstAttribute="centerX" secondItem="0be-PZ-JZ8" secondAttribute="centerX" id="tce-8t-Df3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="ee7-r1-AGJ"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="ZuZ-4Y-wVe"/>
+                                        <exclude reference="F4Q-Cb-QlU"/>
+                                        <exclude reference="FNm-7K-Y5D"/>
+                                        <exclude reference="akh-1j-8KZ"/>
+                                        <exclude reference="mYB-ie-W3H"/>
+                                        <exclude reference="sbC-6h-0bW"/>
+                                        <exclude reference="tce-8t-Df3"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="ee7-r1-AGJ"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="ZuZ-4Y-wVe"/>
+                                        <exclude reference="F4Q-Cb-QlU"/>
+                                        <exclude reference="FNm-7K-Y5D"/>
+                                        <include reference="akh-1j-8KZ"/>
+                                        <exclude reference="mYB-ie-W3H"/>
+                                        <include reference="sbC-6h-0bW"/>
+                                        <exclude reference="tce-8t-Df3"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pqP-Q0-jaD" userLabel="Koloda View" customClass="CustomFoodView" customModule="tinderForFood" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Pe9-b6-5Mp" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bra-Cg-uFX"/>
-                            <constraint firstItem="Pe9-b6-5Mp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kzr-bO-0Bn"/>
+                            <constraint firstAttribute="trailing" secondItem="pqP-Q0-jaD" secondAttribute="trailing" id="1Ew-0d-AfI"/>
+                            <constraint firstItem="pqP-Q0-jaD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7NO-4l-nLA"/>
+                            <constraint firstAttribute="trailing" secondItem="0be-PZ-JZ8" secondAttribute="trailing" id="7fb-To-vUk"/>
+                            <constraint firstItem="pqP-Q0-jaD" firstAttribute="top" secondItem="0be-PZ-JZ8" secondAttribute="bottom" constant="-2" id="Kf1-If-g10">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstItem="0be-PZ-JZ8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RJW-g3-kaz"/>
+                            <constraint firstItem="0be-PZ-JZ8" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="u23-tR-VEi"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pqP-Q0-jaD" secondAttribute="bottom" id="vEh-V6-zYE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="0be-PZ-JZ8"/>
+                                <exclude reference="pqP-Q0-jaD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="vEh-V6-zYE"/>
+                                <exclude reference="7fb-To-vUk"/>
+                                <exclude reference="RJW-g3-kaz"/>
+                                <exclude reference="u23-tR-VEi"/>
+                                <exclude reference="1Ew-0d-AfI"/>
+                                <exclude reference="7NO-4l-nLA"/>
+                                <exclude reference="Kf1-If-g10"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="0be-PZ-JZ8"/>
+                                <include reference="pqP-Q0-jaD"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="vEh-V6-zYE"/>
+                                <include reference="7fb-To-vUk"/>
+                                <include reference="RJW-g3-kaz"/>
+                                <include reference="u23-tR-VEi"/>
+                                <include reference="1Ew-0d-AfI"/>
+                                <include reference="7NO-4l-nLA"/>
+                                <include reference="Kf1-If-g10"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="myLabel" destination="Pe9-b6-5Mp" id="ysx-vZ-hRJ"/>
+                        <outlet property="kolodaView" destination="pqP-Q0-jaD" id="9F3-oh-F6E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="643.5" y="296"/>
         </scene>
     </scenes>
 </document>
