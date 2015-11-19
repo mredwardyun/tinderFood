@@ -1,11 +1,10 @@
 platform :ios, '8.0'
 use_frameworks!
 
-pod "Koloda"
-
 
 target 'tinderForFood' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+    pod "Koloda", '~> 2.0.4'
 end
 
 post_install do |installer|

@@ -85,11 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-tinderForFood/Koloda.framework"
-  install_framework "Pods-tinderForFood/pop.framework"
   install_framework "Pods-tinderForFood/SwiftyJSON.framework"
+  install_framework "Pods-tinderForFood/pop.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-tinderForFood/Koloda.framework"
-  install_framework "Pods-tinderForFood/pop.framework"
   install_framework "Pods-tinderForFood/SwiftyJSON.framework"
+  install_framework "Pods-tinderForFood/pop.framework"
 fi
