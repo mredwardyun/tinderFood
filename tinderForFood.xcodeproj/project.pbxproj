@@ -16,6 +16,7 @@
 		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
 		8AA81BBDC4FA43EEAF4B1320 /* Pods_tinderForFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FADC1622B3E6D2B9BDF7C54E /* Pods_tinderForFood.framework */; };
 		A4CA7450D944C2A6BB0C53A9 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246ECA30511E8DE416DAB7B0 /* Pods.framework */; };
+		BB579C201BFE42E7000243C1 /* swiftyJsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB579C1F1BFE42E7000243C1 /* swiftyJsonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB579C1F1BFE42E7000243C1 /* swiftyJsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swiftyJsonViewController.swift; sourceTree = "<group>"; };
 		BE6207AA2380D43D79A1FF65 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FADC1622B3E6D2B9BDF7C54E /* Pods_tinderForFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinderForFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 				8027D0CA1BF501EE00457024 /* Assets.xcassets */,
 				8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */,
 				8027D0CF1BF501EE00457024 /* Info.plist */,
+				BB579C1F1BFE42E7000243C1 /* swiftyJsonViewController.swift */,
 			);
 			path = tinderForFood;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */,
+				BB579C201BFE42E7000243C1 /* swiftyJsonViewController.swift in Sources */,
 				8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
