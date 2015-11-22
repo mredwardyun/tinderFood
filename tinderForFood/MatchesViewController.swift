@@ -18,31 +18,38 @@ class MatchesViewController: UIViewController, UITableViewDataSource, UITableVie
         
         super.viewDidLoad()
         title = "Matches"
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        let nib = UINib(nibName: "GalleryTableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "galleryCell")
 
     }
     
     //MARK: TableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 5
+    }
+    
+    //TODO: Create table with multiple selections
+    func tableView(tableView: UITableView, numberOfSectionsInTableView section: Int) -> Int {
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
         
-        cell.textLabel?.text = "hello world"
-        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
+        let cell: GalleryTableViewCell = tableView.dequeueReusableCellWithIdentifier("galleryCell", forIndexPath: indexPath) as! GalleryTableViewCell
+        cell.loadImage(title: "Hello", image: "cards_1")
         
         return cell
         
     }
     
+    //MARK: TableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        print("You selected cell #\(indexPath.row)!")
         
     }
     
-    //MARK: TableViewDelegate
     
 
     /*
