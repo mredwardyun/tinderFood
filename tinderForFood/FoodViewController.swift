@@ -9,6 +9,7 @@
 import UIKit
 import pop
 import Koloda
+import SwiftyJSON
 
 private let numberOfCards: UInt = 5
 private let frameAnimationSpringBounciness:CGFloat = 9
