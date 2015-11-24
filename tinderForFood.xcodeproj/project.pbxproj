@@ -158,6 +158,7 @@
 				8027D0CA1BF501EE00457024 /* Assets.xcassets */,
 				8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */,
 				8027D0CF1BF501EE00457024 /* Info.plist */,
+				BB579C1F1BFE42E7000243C1 /* swiftyJsonViewController.swift */,
 			);
 			path = tinderForFood;
 			sourceTree = "<group>";
