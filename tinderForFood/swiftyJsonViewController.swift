@@ -14,13 +14,16 @@ class swiftyJsonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let serverURL = "https://tinder-for-food.herokuapp.com/api/"
+        let serverURL = NSURL(string: "https://tinder-for-food.herokuapp.com/api/")
         
-        DataManager.loadDataFromURL(NSURL(string: serverURL)!, completion:{(data, error) -> Void in
-            if let urlData = data {
-                success(ServerData: urlData)
-            }
-        })
+        var request = NSURLRequest(URL: serverURL!)
+        var session = NSURLSession();
+        session.dataTaskWithRequest(<#request: NSURLRequest#>, completionHandler: <#((NSData!, NSURLResponse!, NSError!) -> Void)?##(NSData!, NSURLResponse!, NSError!) -> Void#>)
+        
+        
+        
+        
+        
 
         // Do any additional setup after loading the view.
     }
