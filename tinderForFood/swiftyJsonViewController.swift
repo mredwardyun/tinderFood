@@ -8,17 +8,17 @@
 
 import UIKit
 import SwiftyJSON
+import Alamofire
 
 class swiftyJsonViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let serverURL = NSURL(string: "https://tinder-for-food.herokuapp.com/api/")
-        
-        var request = NSURLRequest(URL: serverURL!)
-        var session = NSURLSession();
-        session.dataTaskWithRequest(<#request: NSURLRequest#>, completionHandler: <#((NSData!, NSURLResponse!, NSError!) -> Void)?##(NSData!, NSURLResponse!, NSError!) -> Void#>)
+        Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/").responseJSON() {
+            (_, _, data, _) in
+            println(data)
+        }
         
         
         
