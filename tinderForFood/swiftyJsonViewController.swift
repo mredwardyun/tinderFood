@@ -15,10 +15,30 @@ class swiftyJsonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/").responseJSON() {
-            (_, _, data, _) in
-            println(data)
+        Alamofire.request(.GET, "https://api.yelp.com/v2/search", parameters: ["term":"food", "location":"San Francisco", "limit":"1", "oauth_consumer_key": "8HPpfMDPraCnvdfY1aBY-A"], encoding: .JSON)
+        .responseJSON { response in
+            print(response.request)  // original URL request
+            print(response.response) // URL response
+            print(response.data)     // server data
+            print(response.result)   // result of response serialization
+            
+            if let JSON = response.result.value {
+                print("JSON: \(JSON)")
+            }
         }
+        
+       /* Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": "bar"])
+            .responseJSON { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)   // result of response serialization
+                
+                if let JSON = response.result.value {
+                    print("JSON: \(JSON)")
+                }
+        }*/
+        
         
         
         
@@ -27,6 +47,12 @@ class swiftyJsonViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    /*func checkUsername(username: String) -> Int {
+        //Alamofire stuff with username passed
+        
+        //Returns HTTP status code (404, etc)
+    }*/
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
