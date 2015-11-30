@@ -36,7 +36,9 @@ class MatchesViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: GalleryTableViewCell = tableView.dequeueReusableCellWithIdentifier("galleryCell", forIndexPath: indexPath) as! GalleryTableViewCell
-        cell.loadImage(title: "Hello", image: "cards_1")
+        let height = cell.bounds.height
+        let width = cell.bounds.width
+        cell.loadImages(rowHeight: height, rowWidth: width, leftImage: "cards_1", centerImage: "cards_2", rightImage: "cards_3")
         
         return cell
         

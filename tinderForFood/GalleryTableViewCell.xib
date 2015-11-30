@@ -8,44 +8,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GalleryTableViewCell" customModule="tinderForFood" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <rect key="frame" x="0.0" y="0.0" width="1000" height="320"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="319.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="1000" height="320"/>
                 <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rMH-sj-B4Z">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="319.5"/>
-                        <animations/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijB-5D-Kus">
-                        <rect key="frame" x="93" y="249" width="134" height="20.5"/>
-                        <animations/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="134" id="RSu-QA-MNB"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                </subviews>
                 <animations/>
-                <constraints>
-                    <constraint firstItem="rMH-sj-B4Z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Agt-no-CVn"/>
-                    <constraint firstItem="ijB-5D-Kus" firstAttribute="top" secondItem="rMH-sj-B4Z" secondAttribute="bottom" constant="-70.5" id="B3y-RP-wZA"/>
-                    <constraint firstAttribute="trailing" secondItem="rMH-sj-B4Z" secondAttribute="trailing" id="FUR-YI-fMn"/>
-                    <constraint firstItem="rMH-sj-B4Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LPj-s9-xYr"/>
-                    <constraint firstItem="ijB-5D-Kus" firstAttribute="centerX" secondItem="rMH-sj-B4Z" secondAttribute="centerX" id="vJx-7U-P3X"/>
-                    <constraint firstAttribute="bottom" secondItem="rMH-sj-B4Z" secondAttribute="bottom" id="wAO-KA-2IJ"/>
-                </constraints>
             </tableViewCellContentView>
             <animations/>
-            <connections>
-                <outlet property="accessoryView" destination="ijB-5D-Kus" id="oBY-QR-QBz"/>
-                <outlet property="backgroundImageView" destination="rMH-sj-B4Z" id="PRh-Gk-ajV"/>
-                <outlet property="backgroundView" destination="rMH-sj-B4Z" id="NY5-by-4Mq"/>
-                <outlet property="titleLabel" destination="ijB-5D-Kus" id="baO-vv-naZ"/>
-            </connections>
+            <point key="canvasLocation" x="305" y="247"/>
         </tableViewCell>
     </objects>
 </document>

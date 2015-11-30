@@ -52,9 +52,6 @@
                                             <constraint firstAttribute="width" constant="120" id="bhT-VG-CX5"/>
                                             <constraint firstAttribute="height" constant="32" id="j6o-3S-uMB"/>
                                         </constraints>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="140" y="441" width="120" height="32"/>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <animations/>
@@ -93,9 +90,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" misplaced="YES">
-                                            <rect key="frame" x="135" y="39" width="130" height="20.5"/>
-                                        </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cWX-dT-Dfn">
                                         <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -223,6 +217,7 @@
                         <viewControllerLayoutGuide type="bottom" id="aP8-dV-O6Q"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qWS-ah-OEx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jUJ-In-dHY">
@@ -230,10 +225,11 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="galleryCell" rowHeight="90" id="riQ-9d-lkl" customClass="RestaurantTableViewCell" customModule="tinderForFood" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="galleryCell" rowHeight="200" id="riQ-9d-lkl" customClass="GalleryTableViewCell" customModule="tinderForFood" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="cell" tableViewCell="riQ-9d-lkl" id="gl0-JX-Rbo">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </tableViewCellContentView>
@@ -259,10 +255,10 @@
                                 <exclude reference="jUJ-In-dHY"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="VpZ-lo-BRS"/>
                                 <exclude reference="8E7-P0-EXD"/>
                                 <exclude reference="r1e-0v-b6d"/>
                                 <exclude reference="slc-e1-Qq8"/>
-                                <exclude reference="VpZ-lo-BRS"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -270,10 +266,10 @@
                                 <include reference="jUJ-In-dHY"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="VpZ-lo-BRS"/>
                                 <include reference="8E7-P0-EXD"/>
                                 <include reference="r1e-0v-b6d"/>
                                 <include reference="slc-e1-Qq8"/>
-                                <include reference="VpZ-lo-BRS"/>
                             </mask>
                         </variation>
                     </view>
