@@ -15,6 +15,7 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private let reuseIdentifier = "matchCell"
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    var width:CGFloat = 0.0
     
     private let images = ["monell1", "monell2", "monell3", "monell4", "monell5", ]
     
@@ -28,8 +29,8 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func photoForIndexPath(indexPath: NSIndexPath) -> UIImage? {
         
-        
-        if let image = UIImage(named: "monell\(indexPath.row + 1)") {
+        if let image = UIImage(named: "monell1") {
+//        if let image = UIImage(named: "monell\(indexPath.row + 1)") {
             return image
         }
         
@@ -50,11 +51,8 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GalleryPhotoCell
         let photo = photoForIndexPath(indexPath)
-        print(photo?.size)
         cell.backgroundColor = UIColor.blackColor()
         cell.imageView.image = photo
-        
-        print("created cell")
         
         return cell
 
@@ -66,12 +64,14 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: FlowLayoutDelegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        return CGSize(width: 100, height: 100)
+        
+        return CGSize(width: 110, height: 110)
+        
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
     
-    
+
 }
