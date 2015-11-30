@@ -18,8 +18,9 @@
 		808B87781BFE4A55009A4751 /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808B87771BFE4A55009A4751 /* CustomOverlayView.xib */; };
 		808B877A1BFED276009A4751 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B87791BFED276009A4751 /* MatchesViewController.swift */; };
 		808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */; };
-		808B877F1C012F43009A4751 /* GalleryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B877D1C012F43009A4751 /* GalleryTableViewCell.swift */; };
+		808B877F1C012F43009A4751 /* MatchPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B877D1C012F43009A4751 /* MatchPhotoCell.swift */; };
 		808B87801C012F43009A4751 /* GalleryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808B877E1C012F43009A4751 /* GalleryTableViewCell.xib */; };
+		80F93EB01C0C070900382FFF /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F93EAF1C0C070900382FFF /* GalleryPhotoCell.swift */; };
 		8EB1A1D4CB904C7868B252B4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B560C316B690A1B8A029DC /* Pods.framework */; };
 		C538A11A53509445422C4547 /* Pods_tinderForFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5184C6954BB424596164BEB /* Pods_tinderForFood.framework */; };
 /* End PBXBuildFile section */
@@ -62,8 +63,9 @@
 		808B87771BFE4A55009A4751 /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		808B87791BFED276009A4751 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
-		808B877D1C012F43009A4751 /* GalleryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryTableViewCell.swift; sourceTree = "<group>"; };
+		808B877D1C012F43009A4751 /* MatchPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchPhotoCell.swift; sourceTree = "<group>"; };
 		808B877E1C012F43009A4751 /* GalleryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryTableViewCell.xib; sourceTree = "<group>"; };
+		80F93EAF1C0C070900382FFF /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
 		A5184C6954BB424596164BEB /* Pods_tinderForFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinderForFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -177,7 +179,8 @@
 		808B87821C012F76009A4751 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				808B877D1C012F43009A4751 /* GalleryTableViewCell.swift */,
+				808B877D1C012F43009A4751 /* MatchPhotoCell.swift */,
+				80F93EAF1C0C070900382FFF /* GalleryPhotoCell.swift */,
 				805310421BFE4999004D6A09 /* CustomFoodView.swift */,
 				808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */,
 			);
@@ -381,8 +384,9 @@
 			files = (
 				808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */,
 				805310431BFE4999004D6A09 /* CustomFoodView.swift in Sources */,
-				808B877F1C012F43009A4751 /* GalleryTableViewCell.swift in Sources */,
+				808B877F1C012F43009A4751 /* MatchPhotoCell.swift in Sources */,
 				8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */,
+				80F93EB01C0C070900382FFF /* GalleryPhotoCell.swift in Sources */,
 				808B877A1BFED276009A4751 /* MatchesViewController.swift in Sources */,
 				8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */,
 			);

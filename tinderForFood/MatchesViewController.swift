@@ -8,60 +8,70 @@
 
 import UIKit
 
-class MatchesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MatchesViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var collectionView: UICollectionView!
+    
+    private let reuseIdentifier = "matchCell"
+    private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    
+    private let images = ["monell1", "monell2", "monell3", "monell4", "monell5", ]
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
         title = "Matches"
-        let nib = UINib(nibName: "GalleryTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "galleryCell")
 
     }
     
-    //MARK: TableViewDataSource
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    //TODO: Create table with multiple selections
-    func tableView(tableView: UITableView, numberOfSectionsInTableView section: Int) -> Int {
-        return 3
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func photoForIndexPath(indexPath: NSIndexPath) -> UIImage? {
         
-        let cell: GalleryTableViewCell = tableView.dequeueReusableCellWithIdentifier("galleryCell", forIndexPath: indexPath) as! GalleryTableViewCell
-        let height = cell.bounds.height
-        let width = cell.bounds.width
-        cell.loadImages(rowHeight: height, rowWidth: width, leftImage: "cards_1", centerImage: "cards_2", rightImage: "cards_3")
+        
+        if let image = UIImage(named: "monell\(indexPath.row + 1)") {
+            return image
+        }
+        
+        return nil
+        
+    }
+    
+    //MARK: DataSource
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! GalleryPhotoCell
+        let photo = photoForIndexPath(indexPath)
+        print(photo?.size)
+        cell.backgroundColor = UIColor.blackColor()
+        cell.imageView.image = photo
+        
+        print("created cell")
         
         return cell
-        
+
     }
     
-    //MARK: TableViewDelegate
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    //MARK: Delegate
+    
+    
+    //MARK: FlowLayoutDelegate
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        print("You selected cell #\(indexPath.row)!")
-        
+        return CGSize(width: 100, height: 100)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return sectionInsets
     }
     
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
