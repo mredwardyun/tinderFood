@@ -12,6 +12,11 @@ import Alamofire
 
 class swiftyJsonViewController: UIViewController {
 
+    var consumerKey = "8HPpfMDPraCnvdfY1aBY-A"
+    var consumerSecret = "1xtpMhhk--CQDDz5v72AwMM_K1k"
+    var token = "ireJLoBsAiflg_HSScggpFpKTZ1giE8S"
+    var tokenSecret = "0hmsBuZ2hGtFTm80Gt-iveENveI" 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
