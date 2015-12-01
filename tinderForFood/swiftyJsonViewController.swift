@@ -32,20 +32,28 @@ class swiftyJsonViewController: UIViewController {
             }
         }*/
         
-       Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": "bar"])
-            .validate()
-            .responseJSON { response in
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": "bar123"], encoding:.JSON)
+            .responseString { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
                 print(response.result)   // result of response serialization
                 
-                switch response.result {
+                
+                if response.response?.statusCode == 200 {
+                    print("success")
+                } else if response.response?.statusCode == 422 {
+                    print("invalid username")
+                } else {
+                    print("server error")
+                }
+                
+                /*switch response.result {
                 case .Success:
                     print("Validation Success")
                 case .Failure(let error):
-                    print(error)
-                }
+                    print(error)*/
+        
         }
         
         
@@ -57,9 +65,12 @@ class swiftyJsonViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    /* CHECKUSERNAME FUNCTION */
     /*func checkUsername(username: String) -> Int {
         //Alamofire stuff with username passed
-        
+        Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/", parameters: ["username": username], encoding: .JSON)
+        .responseString { response in
+            return response.response?.statusCode
         //Returns HTTP status code (404, etc)
     }*/
 
@@ -69,14 +80,6 @@ class swiftyJsonViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
