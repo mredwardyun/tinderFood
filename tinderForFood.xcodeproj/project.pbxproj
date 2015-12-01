@@ -7,17 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DFB4CAC1C0E0E31006D492C /* swiftyJsonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFB4CAB1C0E0E31006D492C /* swiftyJsonViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0C31BF501EE00457024 /* AppDelegate.swift */; };
-		8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0C51BF501EE00457024 /* FoodViewController.swift */; };
 		8027D0C91BF501EE00457024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0C71BF501EE00457024 /* Main.storyboard */; };
 		8027D0CB1BF501EE00457024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CA1BF501EE00457024 /* Assets.xcassets */; };
 		8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */; };
 		8027D0D91BF501EE00457024 /* tinderForFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */; };
 		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
-		805310371BFE39B6004D6A09 /* CustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805310361BFE39B6004D6A09 /* CustomFoodView.swift */; };
-		805310391BFE3C9D004D6A09 /* CustomOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805310381BFE3C9D004D6A09 /* CustomOverlayView.swift */; };
-		8053103B1BFE3D08004D6A09 /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8053103A1BFE3D08004D6A09 /* CustomOverlayView.xib */; };
-		806965461BFBA39A006D2D13 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806965451BFBA39A006D2D13 /* Pods.framework */; };
 		806965481BFBA39F006D2D13 /* Pods_tinderForFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806965471BFBA39F006D2D13 /* Pods_tinderForFood.framework */; };
 		8069654A1BFBA3A5006D2D13 /* Koloda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 806965491BFBA3A5006D2D13 /* Koloda.framework */; };
 /* End PBXBuildFile section */
@@ -40,11 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0DFB4CAB1C0E0E31006D492C /* swiftyJsonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = swiftyJsonViewController.swift; sourceTree = "<group>"; };
 		246ECA30511E8DE416DAB7B0 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9CFBD6495AB4DFA34C8A4B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8027D0C01BF501EE00457024 /* tinderForFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinderForFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0C31BF501EE00457024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8027D0C51BF501EE00457024 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		8027D0C81BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8027D0CA1BF501EE00457024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8027D0CD1BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,9 +51,6 @@
 		8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		805310361BFE39B6004D6A09 /* CustomFoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFoodView.swift; sourceTree = "<group>"; };
-		805310381BFE3C9D004D6A09 /* CustomOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlayView.swift; sourceTree = "<group>"; };
-		8053103A1BFE3D08004D6A09 /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		8069653F1BFB9F6C006D2D13 /* Koloda.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Koloda.framework; path = "Pods/../build/Debug-iphoneos/Koloda.framework"; sourceTree = "<group>"; };
 		806965401BFB9F6C006D2D13 /* pop.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = pop.framework; path = "Pods/../build/Debug-iphoneos/pop.framework"; sourceTree = "<group>"; };
 		806965411BFB9F6C006D2D13 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
@@ -77,7 +70,6 @@
 			files = (
 				8069654A1BFBA3A5006D2D13 /* Koloda.framework in Frameworks */,
 				806965481BFBA39F006D2D13 /* Pods_tinderForFood.framework in Frameworks */,
-				806965461BFBA39A006D2D13 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,15 +142,11 @@
 			isa = PBXGroup;
 			children = (
 				8027D0C31BF501EE00457024 /* AppDelegate.swift */,
-				8027D0C51BF501EE00457024 /* FoodViewController.swift */,
-				805310361BFE39B6004D6A09 /* CustomFoodView.swift */,
-				805310381BFE3C9D004D6A09 /* CustomOverlayView.swift */,
-				8053103A1BFE3D08004D6A09 /* CustomOverlayView.xib */,
+				0DFB4CAB1C0E0E31006D492C /* swiftyJsonViewController.swift */,
 				8027D0C71BF501EE00457024 /* Main.storyboard */,
 				8027D0CA1BF501EE00457024 /* Assets.xcassets */,
 				8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */,
 				8027D0CF1BF501EE00457024 /* Info.plist */,
-				BB579C1F1BFE42E7000243C1 /* swiftyJsonViewController.swift */,
 			);
 			path = tinderForFood;
 			sourceTree = "<group>";
@@ -252,6 +240,7 @@
 				TargetAttributes = {
 					8027D0BF1BF501EE00457024 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 4D5N2HQBKC;
 					};
 					8027D0D31BF501EE00457024 = {
 						CreatedOnToolsVersion = 7.1;
@@ -290,7 +279,6 @@
 			files = (
 				8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */,
 				8027D0CB1BF501EE00457024 /* Assets.xcassets in Resources */,
-				8053103B1BFE3D08004D6A09 /* CustomOverlayView.xib in Resources */,
 				8027D0C91BF501EE00457024 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,9 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				805310371BFE39B6004D6A09 /* CustomFoodView.swift in Sources */,
-				8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */,
-				805310391BFE3C9D004D6A09 /* CustomOverlayView.swift in Sources */,
+				0DFB4CAC1C0E0E31006D492C /* swiftyJsonViewController.swift in Sources */,
 				8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -508,15 +494,20 @@
 			baseConfigurationReference = A552B34E5AF9621D98A97AEE /* Pods-tinderForFood.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/**",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = tinderForFood/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -525,14 +516,19 @@
 			baseConfigurationReference = 9D6F15D557B5D7F90D4D999C /* Pods-tinderForFood.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = tinderForFood/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFood;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

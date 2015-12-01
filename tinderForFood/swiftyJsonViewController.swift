@@ -20,7 +20,7 @@ class swiftyJsonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Alamofire.request(.GET, "https://api.yelp.com/v2/search", parameters: ["term":"food", "location":"San Francisco", "limit":"1", "oauth_consumer_key": "8HPpfMDPraCnvdfY1aBY-A"], encoding: .JSON)
+        /*Alamofire.request(.GET, "https://api.yelp.com/v2/search", parameters: ["term":"food", "location":"San Francisco", "limit":"1", "oauth_consumer_key": "8HPpfMDPraCnvdfY1aBY-A"], encoding: .JSON)
         .responseJSON { response in
             print(response.request)  // original URL request
             print(response.response) // URL response
@@ -30,19 +30,23 @@ class swiftyJsonViewController: UIViewController {
             if let JSON = response.result.value {
                 print("JSON: \(JSON)")
             }
-        }
+        }*/
         
-       /* Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": "bar"])
+       Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": "bar"])
+            .validate()
             .responseJSON { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
                 print(response.result)   // result of response serialization
                 
-                if let JSON = response.result.value {
-                    print("JSON: \(JSON)")
+                switch response.result {
+                case .Success:
+                    print("Validation Success")
+                case .Failure(let error):
+                    print(error)
                 }
-        }*/
+        }
         
         
         
