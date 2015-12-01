@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h8m-VS-K0l">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -280,6 +282,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="imageView" destination="neQ-kH-Bar" id="aih-6q-RJn"/>
+                                            <segue destination="dye-c1-qWe" kind="show" identifier="restaurantSegue" id="OLX-Vv-3tO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -318,13 +321,13 @@
                                 <exclude reference="ckP-am-x2M"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="Iwd-Xp-Xun"/>
                                 <exclude reference="aQc-eO-ryW"/>
                                 <exclude reference="dtT-ao-ubs"/>
                                 <exclude reference="Rf7-RW-UDt"/>
                                 <exclude reference="nt2-Z8-Wak"/>
                                 <exclude reference="tI1-rc-R5a"/>
                                 <exclude reference="wQC-oc-m9Z"/>
-                                <exclude reference="Iwd-Xp-Xun"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -333,13 +336,13 @@
                                 <include reference="ckP-am-x2M"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="Iwd-Xp-Xun"/>
                                 <include reference="aQc-eO-ryW"/>
                                 <include reference="dtT-ao-ubs"/>
                                 <include reference="Rf7-RW-UDt"/>
                                 <include reference="nt2-Z8-Wak"/>
                                 <include reference="tI1-rc-R5a"/>
                                 <include reference="wQC-oc-m9Z"/>
-                                <include reference="Iwd-Xp-Xun"/>
                             </mask>
                         </variation>
                     </view>
@@ -350,6 +353,126 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gd9-w3-rmT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1416" y="296"/>
+        </scene>
+        <!--Restaurant View Controller-->
+        <scene sceneID="2by-aU-C1u">
+            <objects>
+                <viewController id="dye-c1-qWe" customClass="RestaurantViewController" customModule="tinderForFood" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="B4a-5h-Gdp"/>
+                        <viewControllerLayoutGuide type="bottom" id="bdU-lo-ksy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eTx-P9-8Zn">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7kh-af-dsX">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="7kh-af-dsX" secondAttribute="height" multiplier="1:1" id="2qZ-5F-xmX"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2qZ-5F-xmX"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="2qZ-5F-xmX"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiH-1c-BPb">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kaz-n5-OVI">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="14" y="430" width="133" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kat-HT-Dhb">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="14" y="452" width="133" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open until 10 pm today" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Idl-EW-pCQ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="14" y="503" width="177" height="21"/>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fiH-1c-BPb" firstAttribute="leading" secondItem="eTx-P9-8Zn" secondAttribute="leadingMargin" constant="-6" id="UK4-h4-VjR"/>
+                            <constraint firstItem="fiH-1c-BPb" firstAttribute="top" secondItem="7kh-af-dsX" secondAttribute="bottom" constant="8" id="hBa-Nf-oGH"/>
+                            <constraint firstItem="7kh-af-dsX" firstAttribute="leading" secondItem="eTx-P9-8Zn" secondAttribute="leading" id="hDq-C5-z7G"/>
+                            <constraint firstAttribute="trailing" secondItem="7kh-af-dsX" secondAttribute="trailing" id="l1f-IH-A74"/>
+                            <constraint firstItem="7kh-af-dsX" firstAttribute="top" secondItem="eTx-P9-8Zn" secondAttribute="top" id="rLW-Fg-Ops"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="7kh-af-dsX"/>
+                                <exclude reference="fiH-1c-BPb"/>
+                                <exclude reference="Kaz-n5-OVI"/>
+                                <exclude reference="Kat-HT-Dhb"/>
+                                <exclude reference="Idl-EW-pCQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="hDq-C5-z7G"/>
+                                <exclude reference="l1f-IH-A74"/>
+                                <exclude reference="rLW-Fg-Ops"/>
+                                <exclude reference="UK4-h4-VjR"/>
+                                <exclude reference="hBa-Nf-oGH"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="7kh-af-dsX"/>
+                                <include reference="fiH-1c-BPb"/>
+                                <include reference="Kaz-n5-OVI"/>
+                                <include reference="Kat-HT-Dhb"/>
+                                <include reference="Idl-EW-pCQ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="hDq-C5-z7G"/>
+                                <include reference="l1f-IH-A74"/>
+                                <include reference="rLW-Fg-Ops"/>
+                                <include reference="UK4-h4-VjR"/>
+                                <include reference="hBa-Nf-oGH"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="addressLabel" destination="Kaz-n5-OVI" id="4mX-aJ-gZb"/>
+                        <outlet property="distanceLabel" destination="Kat-HT-Dhb" id="t2b-WR-Xdl"/>
+                        <outlet property="hoursLabel" destination="Idl-EW-pCQ" id="PO4-sM-ypV"/>
+                        <outlet property="imageView" destination="7kh-af-dsX" id="8dx-KC-uFw"/>
+                        <outlet property="restaurantLabel" destination="fiH-1c-BPb" id="Sh9-AK-teZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CNe-oh-Yn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2157" y="296"/>
         </scene>
     </scenes>
     <resources>

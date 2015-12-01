@@ -15,6 +15,8 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private let reuseIdentifier = "matchCell"
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+    private let segueIdentifer = "restaurantSegue"
+    
     var width:CGFloat = 0.0
     
     private let images = ["monell1", "monell2", "monell3", "monell4", "monell5", ]
@@ -33,9 +35,15 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
 //        if let image = UIImage(named: "monell\(indexPath.row + 1)") {
             return image
         }
-        
         return nil
-        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == segueIdentifer {
+            let svc = segue.destinationViewController as! RestaurantViewController
+            svc.restaurantData = ["name": "Monell's", "address": "1234 Hello St", "distance": "1.2 mi away", "closingTime": "10pm"]
+            
+        }
     }
     
     //MARK: DataSource
@@ -54,11 +62,19 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
         cell.backgroundColor = UIColor.blackColor()
         cell.imageView.image = photo
         
+        
         return cell
 
     }
     
     //MARK: Delegate
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        if let cell = collectionView.cellForItemAtIndexPath(indexPath) {
+            performSegueWithIdentifier(segueIdentifer, sender: cell)
+        }
+        
+    }
     
     
     //MARK: FlowLayoutDelegate

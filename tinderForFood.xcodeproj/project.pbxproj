@@ -15,6 +15,7 @@
 		8027D0D91BF501EE00457024 /* tinderForFoodTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */; };
 		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
 		805310431BFE4999004D6A09 /* CustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805310421BFE4999004D6A09 /* CustomFoodView.swift */; };
+		805C36AE1C0E0D0800ADD259 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */; };
 		808B87781BFE4A55009A4751 /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808B87771BFE4A55009A4751 /* CustomOverlayView.xib */; };
 		808B877A1BFED276009A4751 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B87791BFED276009A4751 /* MatchesViewController.swift */; };
 		808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */; };
@@ -60,6 +61,7 @@
 		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		805310421BFE4999004D6A09 /* CustomFoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFoodView.swift; sourceTree = "<group>"; };
+		805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
 		808B87771BFE4A55009A4751 /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		808B87791BFED276009A4751 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				8027D0C51BF501EE00457024 /* FoodViewController.swift */,
 				808B87791BFED276009A4751 /* MatchesViewController.swift */,
+				805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */,
+				805C36AE1C0E0D0800ADD259 /* RestaurantViewController.swift in Sources */,
 				805310431BFE4999004D6A09 /* CustomFoodView.swift in Sources */,
 				808B877F1C012F43009A4751 /* MatchPhotoCell.swift in Sources */,
 				8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */,
