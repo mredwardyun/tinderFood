@@ -73,12 +73,46 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
         
-        
-        
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/deleteRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
+            .responseString { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)
+                
+                if response.response?.statusCode == 200 {
+                    print("successfully deleted")
+                } else if response.response?.statusCode == 401 {
+                    print("user doesn't exist or incorrect credentials")
+                } else {
+                    print("server error-deleteRestaurant")
+                }
+        }
+    
+    Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/getRestaurant", parameters: ["access_token": "accesstoken"], encoding: .JSON)
+        .responseString { response in
+            print(response.request)  // original URL request
+            print(response.response) // URL response
+            print(response.data)     // server data
+            print(response.result)
+            
+            if response.response?.statusCode == 200 {
+                print("successfully deleted")
+                // ADD SWIFTYJSON HERE
+            } else if response.response?.statusCode == 401 {
+                print("user doesn't exist or incorrect credentials")
+            } else {
+                print("server error-deleteRestaurant")
+            }
+        }
+
+
+
 
         // Do any additional setup after loading the view.
     }
-    
+
+
     /* CHECKUSERNAME FUNCTION */
     /*func checkUsername(username: String) -> Int {
         //Alamofire stuff with username passed
@@ -90,14 +124,14 @@ class swiftyJsonViewController: UIViewController {
     
     /* ADD RESTAURANT FUNCTION */
     /*func addRestaurant(accesstoken: String, restaurantid: String) -> Int {
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": accesstoken, "restaurantid": restaurantid], encoding: .JSON)
         .responseString { response in
 
             return response.response?.statusCode
 
             }
         }
-
+*/
 
 
     override func didReceiveMemoryWarning() {
