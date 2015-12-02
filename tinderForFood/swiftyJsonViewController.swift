@@ -45,7 +45,7 @@ class swiftyJsonViewController: UIViewController {
                 } else if response.response?.statusCode == 422 {
                     print("invalid username")
                 } else {
-                    print("server error")
+                    print("server error-checkUsername")
                 }
                 
                 /*switch response.result {
@@ -57,7 +57,21 @@ class swiftyJsonViewController: UIViewController {
         }
         
         
-        
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
+            .responseString { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)
+                
+                if response.response?.statusCode == 200 {
+                    print("success")
+                } else if response.response?.statusCode == 401 {
+                    print("user doesn't exist or incorrect credentials")
+                } else {
+                    print("server error-addRestaurant")
+                }
+        }
         
         
         
@@ -73,13 +87,25 @@ class swiftyJsonViewController: UIViewController {
             return response.response?.statusCode
         //Returns HTTP status code (404, etc)
     }*/
+    
+    /* ADD RESTAURANT FUNCTION */
+    /*func addRestaurant(accesstoken: String, restaurantid: String) -> Int {
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
+        .responseString { response in
+
+            return response.response?.statusCode
+
+            }
+        }
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    
+
+
 
 }
