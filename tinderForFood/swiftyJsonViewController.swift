@@ -41,7 +41,7 @@ class swiftyJsonViewController: UIViewController {
                 
                 
                 if response.response?.statusCode == 200 {
-                    print("success")
+                    print("success-checkUsername")
                 } else if response.response?.statusCode == 422 {
                     print("invalid username")
                 } else {
@@ -56,7 +56,7 @@ class swiftyJsonViewController: UIViewController {
         
         }
         
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/checkEmail", parameters: ["email": "email"], encoding: .JSON)
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/checkEmail", parameters: ["email": "birdsong.me@gmail.com"], encoding: .JSON)
             .responseString { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
@@ -64,7 +64,7 @@ class swiftyJsonViewController: UIViewController {
                 print(response.result)
                 
                 if response.response?.statusCode == 200 {
-                    print("success")
+                    print("success-checkEmail")
                 } else if response.response?.statusCode == 423 {
                     print("email is taken or is invalid")
                 } else {
@@ -72,15 +72,19 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
         
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/register", parameters: ["access_token": "accesstoken", "username": "bar123", "email": "email", "password": "password"], encoding: .JSON)
-            .responseString { response in
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/register", parameters: ["username": "bar915", "email": "nickspar@gmail.com", "password": "password"], encoding: .JSON)
+            .responseJSON { response in
+                let swiftyJsonVar = JSON(response.result.value!)
+                let resData = swiftyJsonVar["access_token"].arrayObject
+                print(resData)
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
-                print(response.result)
+                print(response.result.value)
                 
                 if response.response?.statusCode == 200 {
-                    print("success")
+                    print("success-register")
+                    
                 } else if response.response?.statusCode == 422 {
                     print("invalid username")
                 } else if response.response?.statusCode == 423 {
@@ -90,7 +94,7 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
 
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/login", parameters: ["access_token": "accesstoken", "username": "bar123", "password": "password"], encoding: .JSON)
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/login", parameters: ["username": "bar123", "password": "password"], encoding: .JSON)
             .responseString { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
@@ -98,7 +102,7 @@ class swiftyJsonViewController: UIViewController {
                 print(response.result)
                 
                 if response.response?.statusCode == 200 {
-                    print("success")
+                    print("success-login")
                 } else if response.response?.statusCode == 401 {
                     print("invalid login")
                 } else {
@@ -106,7 +110,7 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
 
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk", "restaurantid": "bamboo-bistro-nashville"], encoding: .JSON)
             .responseString { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
@@ -114,7 +118,7 @@ class swiftyJsonViewController: UIViewController {
                 print(response.result)
                 
                 if response.response?.statusCode == 200 {
-                    print("success")
+                    print("success-addRestaurant")
                 } else if response.response?.statusCode == 401 {
                     print("user doesn't exist or incorrect credentials")
                 } else {
@@ -122,7 +126,7 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
         
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/deleteRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/deleteRestaurant", parameters: ["access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk", "restaurantid": "bamboo-bistro-nashville"], encoding: .JSON)
             .responseString { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
@@ -138,7 +142,7 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
     
-    Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/getRestaurant", parameters: ["access_token": "accesstoken"], encoding: .JSON)
+    Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/getRestaurants", parameters: ["access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk"], encoding: .JSON)
         .responseString { response in
             print(response.request)  // original URL request
             print(response.response) // URL response
@@ -146,12 +150,12 @@ class swiftyJsonViewController: UIViewController {
             print(response.result)
             
             if response.response?.statusCode == 200 {
-                print("successfully deleted")
+                print("successfully got matches")
                 // ADD SWIFTYJSON HERE
             } else if response.response?.statusCode == 401 {
                 print("user doesn't exist or incorrect credentials")
             } else {
-                print("server error-deleteRestaurant")
+                print("server error-getRestaurant")
             }
         }
 
