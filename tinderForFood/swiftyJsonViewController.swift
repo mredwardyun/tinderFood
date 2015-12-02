@@ -56,7 +56,56 @@ class swiftyJsonViewController: UIViewController {
         
         }
         
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/checkEmail", parameters: ["email": "email"], encoding: .JSON)
+            .responseString { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)
+                
+                if response.response?.statusCode == 200 {
+                    print("success")
+                } else if response.response?.statusCode == 423 {
+                    print("email is taken or is invalid")
+                } else {
+                    print("server error-checkEmail")
+                }
+        }
         
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/register", parameters: ["access_token": "accesstoken", "username": "bar123", "email": "email", "password": "password"], encoding: .JSON)
+            .responseString { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)
+                
+                if response.response?.statusCode == 200 {
+                    print("success")
+                } else if response.response?.statusCode == 422 {
+                    print("invalid username")
+                } else if response.response?.statusCode == 423 {
+                    print("email is invalid")
+                } else {
+                    print("server error-register")
+                }
+        }
+
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/login", parameters: ["access_token": "accesstoken", "username": "bar123", "password": "password"], encoding: .JSON)
+            .responseString { response in
+                print(response.request)  // original URL request
+                print(response.response) // URL response
+                print(response.data)     // server data
+                print(response.result)
+                
+                if response.response?.statusCode == 200 {
+                    print("success")
+                } else if response.response?.statusCode == 401 {
+                    print("invalid login")
+                } else {
+                    print("server error-login")
+                }
+        }
+
         Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": "accesstoken", "restaurantid": "restaurantid"], encoding: .JSON)
             .responseString { response in
                 print(response.request)  // original URL request
@@ -122,6 +171,38 @@ class swiftyJsonViewController: UIViewController {
         //Returns HTTP status code (404, etc)
     }*/
     
+
+    /* CHECKEMAIL FUNCTION */
+    /*func checkEmail(email: String) -> Int {
+        //Alamofire stuff with email passed
+        Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/users/addEmail", parameters: ["username": username], encoding: .JSON)
+        .responseString { response in
+            return response.response?.statusCode
+        //Returns HTTP status code (404, etc)
+    }*/
+
+
+    /* REGISTER FUNCTION */
+    /*func register(accesstoken: String, username: String, email: String, password: String) -> Int {
+        //Alamofire stuff
+        Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/users/register", parameters: ["access_token": "accesstoken", "username": "bar123", "email": "email", "password": "password"], encoding: .JSON)
+            .responseString { response in
+                return response.response?.statusCode
+        //Returns HTTP status code (404, etc)
+    }*/
+
+    /* LOGIN FUNCTION */
+    /*func register(accesstoken: String, username: String, password: String) -> Int {
+        //Alamofire stuff
+        Alamofire.request(.GET, "https://tinder-for-food.herokuapp.com/api/users/login", parameters: ["access_token": "accesstoken", "username": "bar123", "password": "password"], encoding: .JSON)
+            .responseString { response in
+                return response.response?.statusCode
+        //Returns HTTP status code (404, etc)
+    }*/
+
+    
+
+
     /* ADD RESTAURANT FUNCTION */
     /*func addRestaurant(accesstoken: String, restaurantid: String) -> Int {
         Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/addRestaurant", parameters: ["access_token": accesstoken, "restaurantid": restaurantid], encoding: .JSON)
