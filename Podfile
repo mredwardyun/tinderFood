@@ -6,6 +6,7 @@ pod "Koloda"
 
 target 'tinderForFood' do
     pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+    pod 'Alamofire', '~> 3.0'
 end
 
 post_install do |installer|
