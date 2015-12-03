@@ -72,17 +72,20 @@ class swiftyJsonViewController: UIViewController {
                 }
         }
         
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/register", parameters: ["username": "bar915", "email": "nickspar@gmail.com", "password": "password"], encoding: .JSON)
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/register", parameters: ["username": "bsedjgosj", "email": "nicksparkman0@gmail.com", "password": "password"], encoding: .JSON)
             .responseJSON { response in
-                let swiftyJsonVar = JSON(response.result.value!)
-                let resData = swiftyJsonVar["access_token"].arrayObject
-                print(resData)
+                
+                //MARK: Can't handle error
+                
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
                 print(response.result.value)
-                
+            
                 if response.response?.statusCode == 200 {
+                    let swiftyJsonVar = JSON(response.result.value!)
+                    let accessToken = swiftyJsonVar["access_token"].stringValue
+                    print(accessToken)//return and save as variable because it is needed for other calls
                     print("success-register")
                     
                 } else if response.response?.statusCode == 422 {
