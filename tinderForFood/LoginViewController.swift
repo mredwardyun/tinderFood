@@ -161,6 +161,8 @@ class LoginViewController: UIViewController {
         }
         else {
             checkUsername(username!) { responseCode, error in
+                
+                //TODO: Fix alerts when register fails
                 if responseCode == 200 {
                     self.checkEmail(email!) { responseCode, error in
                         if responseCode == 200 {
