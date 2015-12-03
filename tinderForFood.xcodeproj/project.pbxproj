@@ -21,6 +21,7 @@
 		808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */; };
 		808B877F1C012F43009A4751 /* MatchPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B877D1C012F43009A4751 /* MatchPhotoCell.swift */; };
 		808B87801C012F43009A4751 /* GalleryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808B877E1C012F43009A4751 /* GalleryTableViewCell.xib */; };
+		80E1D9631C10AE6400631A79 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E1D9621C10AE6400631A79 /* LoginViewController.swift */; };
 		80F93EB01C0C070900382FFF /* GalleryPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F93EAF1C0C070900382FFF /* GalleryPhotoCell.swift */; };
 		8EB1A1D4CB904C7868B252B4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69B560C316B690A1B8A029DC /* Pods.framework */; };
 		C538A11A53509445422C4547 /* Pods_tinderForFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5184C6954BB424596164BEB /* Pods_tinderForFood.framework */; };
@@ -67,6 +68,7 @@
 		808B877B1BFEE250009A4751 /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		808B877D1C012F43009A4751 /* MatchPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchPhotoCell.swift; sourceTree = "<group>"; };
 		808B877E1C012F43009A4751 /* GalleryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GalleryTableViewCell.xib; sourceTree = "<group>"; };
+		80E1D9621C10AE6400631A79 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		80F93EAF1C0C070900382FFF /* GalleryPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryPhotoCell.swift; sourceTree = "<group>"; };
 		A5184C6954BB424596164BEB /* Pods_tinderForFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tinderForFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				8027D0C51BF501EE00457024 /* FoodViewController.swift */,
+				80E1D9621C10AE6400631A79 /* LoginViewController.swift */,
 				808B87791BFED276009A4751 /* MatchesViewController.swift */,
 				805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */,
 			);
@@ -385,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80E1D9631C10AE6400631A79 /* LoginViewController.swift in Sources */,
 				808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */,
 				805C36AE1C0E0D0800ADD259 /* RestaurantViewController.swift in Sources */,
 				805310431BFE4999004D6A09 /* CustomFoodView.swift in Sources */,
