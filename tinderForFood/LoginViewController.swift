@@ -109,10 +109,18 @@ class LoginViewController: UIViewController {
         let username = usernameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
+//        let parameters = ["username": username, "email": email, "password": password]
+//        makeJsonCall("login", params: parameters) { responseCode, responseJson, error in
+//            print(responseCode)
+//            self.accessToken = responseJson["access_token"].stringValue
+//            print(self.accessToken)
+//        }
         let parameters = ["username": username, "email": email, "password": password]
-        makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
+        print(parameters)
+        makeJsonCall("login", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
+            print(self.accessToken)
         }
     }
     
@@ -187,6 +195,7 @@ class LoginViewController: UIViewController {
         makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
+            print(self.accessToken)
         }
     }
     
