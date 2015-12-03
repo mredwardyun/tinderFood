@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
@@ -25,81 +26,142 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var confirmTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
+    private var loginBool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkUsername("hello") { responseObject in
-            print("response is \(responseObject)")
-        }
+        //        print("this should be 422: \(checkUsername("edward1"))")
+        //        print("this should be 200: \(checkUsername("mySuperMan"))")
         
-        makeCall("checkEmail", params: ["email": "birdsong.me@gmail.com"]) { responseObject in
-            print("call response is \(responseObject)")
-        }
-
+        
+        //        makeCall("register", params: ["username": "edward3", "email": "edward3@gmail.com", "password": "myPassword"]) { responseObject in
+        //            print("call response is \(responseObject)")
+        //            print("data is \(responseObject["access_token"].stringValue)")
+        //        }
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
+//    func checkUsername() -> Bool {
+//        var flag = false
+//        makeCall("checkUsername", params: ["username": "edward123"]) { responseObject, error in
+//            print("response is \(responseObject); error is \(error)")
+//            if responseObject == 200 {
+//                flag = true
+//            }
+//        }
+//        return flag
+//    }
     
     /* CHECKUSERNAME FUNCTION */
-    func checkUsername(username: String, completionHandler: (Int) -> ()) {
-        
-        //Alamofire stuff with username passed
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": username], encoding: .JSON)
-            .responseString { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)   // result of response serialization
-                
-                if response.response?.statusCode == 200 {
-                    print("success-checkUsername")
-                } else if response.response?.statusCode == 422 {
-                    print("invalid username")
-                } else {
-                    print("server error-checkUsername")
-                }
-                
-//                abc = Int(response.response?.statusCode)
-                completionHandler(response.response!.statusCode as Int)
-        }
-    //Returns HTTP status code (404, etc)
-    }
+    //    func checkUsername(username: String, completionHandler: (Int) -> ()) {
+    //
+    //        //Alamofire stuff with username passed
+    //        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": username], encoding: .JSON)
+    //            .responseString { response in
+    //                print(response.request)  // original URL request
+    //                print(response.response) // URL response
+    //                print(response.data)     // server data
+    //                print(response.result)   // result of response serialization
+    //
+    //                if response.response?.statusCode == 200 {
+    //                    print("success-checkUsername")
+    //                } else if response.response?.statusCode == 422 {
+    //                    print("invalid username")
+    //                } else {
+    //                    print("server error-checkUsername")
+    //                }
+    //
+    ////                abc = Int(response.response?.statusCode)
+    //                completionHandler(response.response!.statusCode as Int)
+    //        }
+    //    //Returns HTTP status code (404, etc)
+    //    }
     
-    func makeCall(apiCall: String, params: [String:String], completionHandler: (String) -> ()) {
+    //    func makeCall(apiCall: String, params: [String:String], completionHandler: (NSString, NSError) -> ()) {
+    func makeCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
         Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/\(apiCall)", parameters: params, encoding: .JSON)
-            .responseString { response in
+            .responseJSON { response in
                 print(response.request)  // original URL request
                 print(response.response) // URL response
                 print(response.data)     // server data
                 print(response.result)
                 
-                if response.response?.statusCode == 200 {
-                    print("success-checkEmail")
-                } else if response.response?.statusCode == 423 {
-                    print("email is taken or is invalid")
+                let json = JSON(response.data!)
+                
+                
+                if let accessToken = json["access_token"].string {
+                    print("printing \(accessToken)")
                 } else {
-                    print("server error-checkEmail")
+                    print(json["access_token"].error)
                 }
-                completionHandler(response.result.value! as String)
+
+                
+                completionHandler(response.response!.statusCode, json, response.result.error)
+                
         }
     }
     
     
+    //MARK: Storyboard
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func loginButtonClicked(sender: AnyObject) {
+        if loginBool {
+            checkThis()
+        } else {
+            signup()
+        }
     }
-    */
+    
+    func login() {
+        let parameters = ["username": "edward3", "email": "edward3@gmail.com", "password": "password"]
+        makeCall("login", params: parameters) { responseCode, responseJson, error in
+            print(responseCode)
+            print(responseJson)
+        }
+    }
+    
+    func signup() {
+        let parameters = ["username": "edward22", "email": "edward22@gmail.com", "password": "password"]
+        makeCall("register", params: parameters) { responseCode, responseJson, error in
+            print(responseCode)
+            print(responseJson)
+        }
+    }
+    
+    func checkThis() {
+        let parameters = ["username": "avery"]
+        makeCall("checkUsername", params: parameters) { responseCode, responseJson, error in
+            print(responseCode)
+        }
+    }
+    
+    @IBAction func segmentChanged(sender: AnyObject) {
+        switch loginSegmentedControl.selectedSegmentIndex {
+            case 0:
+                loginSelected()
+            case 1:
+                signupSelected()
+            default:
+                break
+        }
+    }
+    
+    func loginSelected() {
+        print("login")
+        confirmLabel.hidden = false
+        confirmTextField.hidden = false
+        loginButton.setTitle("Login", forState: .Normal)
+        loginBool = true
+    }
+    func signupSelected() {
+        print("signup")
+        confirmLabel.hidden = true
+        confirmTextField.hidden = true
+        loginButton.setTitle("Signup", forState: .Normal)
+        loginBool = false
 
+    }
+    
 }

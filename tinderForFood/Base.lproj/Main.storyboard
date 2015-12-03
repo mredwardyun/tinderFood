@@ -26,6 +26,9 @@
                                     <segment title="Login"/>
                                     <segment title="Signup"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentChanged:" destination="0AO-L0-zOZ" eventType="valueChanged" id="10d-CL-H1v"/>
+                                </connections>
                             </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bMp-qT-6lk">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -39,7 +42,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsK-Nr-Trz">
+                            <textField hidden="YES" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RsK-Nr-Trz">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,7 +62,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nw-i7-cOt">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nw-i7-cOt">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -69,9 +72,22 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8YC-Wj-d7I">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="63" id="lbX-j7-vE5"/>
+                                </constraints>
                                 <state key="normal" title="Login"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="lbX-j7-vE5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="lbX-j7-vE5"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="04t-iH-W1X"/>
+                                    <action selector="loginButtonClicked:" destination="0AO-L0-zOZ" eventType="primaryActionTriggered" id="HJO-ev-noA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -93,6 +109,7 @@
                             <constraint firstItem="4Mr-4N-1pl" firstAttribute="centerY" secondItem="bMp-qT-6lk" secondAttribute="centerY" id="b8K-lB-wD1"/>
                             <constraint firstItem="JBL-IG-I8c" firstAttribute="leading" secondItem="hFB-nX-beX" secondAttribute="trailing" constant="22" id="bBE-Dz-2wo"/>
                             <constraint firstItem="RsK-Nr-Trz" firstAttribute="leading" secondItem="JBL-IG-I8c" secondAttribute="leading" id="dlU-NR-wjc"/>
+                            <constraint firstItem="4o0-oN-f9o" firstAttribute="centerX" secondItem="G2x-2r-RfY" secondAttribute="centerX" id="fFQ-KK-g2a"/>
                             <constraint firstItem="JBL-IG-I8c" firstAttribute="leading" secondItem="bMp-qT-6lk" secondAttribute="leading" id="h7K-Zr-V0L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4o0-oN-f9o" secondAttribute="trailing" constant="119" id="jAv-ft-VRp">
                                 <variation key="widthClass=compact" constant="122"/>
@@ -118,6 +135,7 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="SiC-dF-m3U"/>
+                                <exclude reference="fFQ-KK-g2a"/>
                                 <exclude reference="jAv-ft-VRp"/>
                                 <exclude reference="8ex-yp-cNx"/>
                                 <exclude reference="b8K-lB-wD1"/>
@@ -154,7 +172,8 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="SiC-dF-m3U"/>
-                                <include reference="jAv-ft-VRp"/>
+                                <include reference="fFQ-KK-g2a"/>
+                                <exclude reference="jAv-ft-VRp"/>
                                 <include reference="8ex-yp-cNx"/>
                                 <include reference="b8K-lB-wD1"/>
                                 <include reference="GoL-ii-CGv"/>
@@ -667,7 +686,4 @@
         <image name="btn_skip_normal" width="32" height="32"/>
         <image name="btn_skip_pressed" width="32" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="04t-iH-W1X"/>
-    </inferredMetricsTieBreakers>
 </document>
