@@ -34,78 +34,9 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //        print("this should be 422: \(checkUsername("edward1"))")
-        //        print("this should be 200: \(checkUsername("mySuperMan"))")
-        
-        
-        //        makeCall("register", params: ["username": "edward3", "email": "edward3@gmail.com", "password": "myPassword"]) { responseObject in
-        //            print("call response is \(responseObject)")
-        //            print("data is \(responseObject["access_token"].stringValue)")
-        //        }
-        
-        // Do any additional setup after loading the view.
-    }
+            }
     
-    //    func checkUsername() -> Bool {
-    //        var flag = false
-    //        makeCall("checkUsername", params: ["username": "edward123"]) { responseObject, error in
-    //            print("response is \(responseObject); error is \(error)")
-    //            if responseObject == 200 {
-    //                flag = true
-    //            }
-    //        }
-    //        return flag
-    //    }
-    
-    /* CHECKUSERNAME FUNCTION */
-    //    func checkUsername(username: String, completionHandler: (Int) -> ()) {
-    //
-    //        //Alamofire stuff with username passed
-    //        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/checkUsername", parameters: ["username": username], encoding: .JSON)
-    //            .responseString { response in
-    //                print(response.request)  // original URL request
-    //                print(response.response) // URL response
-    //                print(response.data)     // server data
-    //                print(response.result)   // result of response serialization
-    //
-    //                if response.response?.statusCode == 200 {
-    //                    print("success-checkUsername")
-    //                } else if response.response?.statusCode == 422 {
-    //                    print("invalid username")
-    //                } else {
-    //                    print("server error-checkUsername")
-    //                }
-    //
-    ////                abc = Int(response.response?.statusCode)
-    //                completionHandler(response.response!.statusCode as Int)
-    //        }
-    //    //Returns HTTP status code (404, etc)
-    //    }
-    
-    //    func makeCall(apiCall: String, params: [String:String], completionHandler: (NSString, NSError) -> ()) {
-    func makeCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/\(apiCall)", parameters: params, encoding: .JSON)
-            .responseString { response in
-                print(response.request)  // original URL request
-                print(response.response) // URL response
-                print(response.data)     // server data
-                print(response.result)
-                
-                let json = JSON(response.data!)
-                
-                //                if let accessToken = json["access_token"] {
-                //                    print("printing \(accessToken)")
-                //                } else {
-                //                    print(json["access_token"].error)
-                //                }
-                
-                
-                completionHandler(response.response!.statusCode, json, response.result.error)
-                
-        }
-    }
-    
+    // MARK: Networking (Alamofire)
     func makeJsonCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
         Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/\(apiCall)", parameters: params, encoding: .JSON).responseJSON { response in
             
@@ -126,24 +57,62 @@ class LoginViewController: UIViewController {
         }
     }
     
+    func makeCall(apiCall: String, params: [String: String], completionHandler: (Int, NSError?) -> ()) {
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/\(apiCall)", parameters: params, encoding: .JSON).responseString { response in
+            
+            guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling POST on /api/\(apiCall)")
+                print(response.result.error!)
+                return
+            }
+            
+            if let value: Int = response.response!.statusCode {
+                // handle the results as JSON, without a bunch of nested if loops
+                completionHandler(value, response.result.error)
+            }
+            
+        }
+    }
+    
+    func checkUsername(username: String, completionHandler: (Int, NSError?) -> ()) {
+        let parameters = ["username": username]
+        makeCall("checkUsername", params: parameters) { responseCode, error in
+            print(responseCode)
+            print(error)
+            completionHandler(responseCode, error)
+        }
+    }
+    
+    func checkEmail(email: String, completionHandler: (Int, NSError?) -> ()) {
+        let parameters = ["email": email]
+        makeCall("checkEmail", params: parameters) { responseCode, error in
+            print(responseCode)
+            print(error)
+            completionHandler(responseCode, error)
+        }
+    }
+    
     
     
     
     //MARK: Storyboard
-    
     @IBAction func loginButtonClicked(sender: AnyObject) {
         if loginBool {
-//            checkThis()
+            login()
         } else {
             signup()
         }
     }
     
     func login() {
-        let parameters = ["username": "edward3", "email": "edward3@gmail.com", "password": "password"]
-        makeCall("login", params: parameters) { responseCode, responseJson, error in
+        let username = usernameTextField.text!
+        let email = emailTextField.text!
+        let password = passwordTextField.text!
+        let parameters = ["username": username, "email": email, "password": password]
+        makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
-            print(responseJson)
+            self.accessToken = responseJson["access_token"].stringValue
         }
     }
     
@@ -183,20 +152,41 @@ class LoginViewController: UIViewController {
             self.presentViewController(alertController, animated: true, completion: nil)
         }
         else {
-            checkUsername(username!)
-            let parameters = ["username": username!, "email": email!, "password": password!]
-            makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
-                print(responseCode)
-                self.accessToken = responseJson["access_token"].stringValue
+            checkUsername(username!) { responseCode, error in
+                if responseCode == 200 {
+                    self.checkEmail(email!) { responseCode, error in
+                        if responseCode == 200 {
+                            self.registerUser(username!, email: email!, password: password!)
+                        }
+                        else {
+                            print(error)
+                            let alertController = UIAlertController(title: "Oops", message:
+                                "Email has already been used. Try a new one.", preferredStyle: UIAlertControllerStyle.Alert)
+                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                            self.presentViewController(alertController, animated: true, completion: nil)
+
+                        }
+                    }
+                }
+                else {
+                    print(error)
+                    let alertController = UIAlertController(title: "Oops", message:
+                        "Username is already taken. Try something different.", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+                
             }
         }
         
     }
     
-    func checkUsername(username: String) {
-        let parameters = ["username": username]
-        makeCall("checkUsername", params: parameters) { responseCode, responseJson, error in
+    func registerUser(username: String, email: String, password: String) {
+        let parameters = ["username": username, "email": email, "password": password]
+        print(parameters)
+        makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
+            self.accessToken = responseJson["access_token"].stringValue
         }
     }
     
