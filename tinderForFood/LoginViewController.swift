@@ -9,14 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-import CoreLocation
 
-class LoginViewController: UIViewController, CLLocationManagerDelegate {
-    
-    private var consumerKey = "8HPpfMDPraCnvdfY1aBY-A"
-    private var consumerSecret = "1xtpMhhk--CQDDz5v72AwMM_K1k"
-    private var token = "ireJLoBsAiflg_HSScggpFpKTZ1giE8S"
-    private var tokenSecret = "0hmsBuZ2hGtFTm80Gt-iveENveI"
+class LoginViewController: UIViewController {
     
     private var accessToken = ""
     let loginSegueIdentifier = "loginSegue"
@@ -38,13 +32,9 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+                
     }
-    
-    // MARK: CoreLocation
-
-    
+        
     // MARK: Networking (Alamofire)
     func makeJsonCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
         Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/\(apiCall)", parameters: params, encoding: .JSON).responseJSON { response in
@@ -102,9 +92,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    
-    
-    
     //MARK: Storyboard
     @IBAction func loginButtonClicked(sender: AnyObject) {
         if loginBool {
@@ -124,6 +111,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
             NSUserDefaults.standardUserDefaults().setObject(self.accessToken, forKey: "access_token")
+            NSUserDefaults.standardUserDefaults().synchronize()
             print(self.accessToken)
             self.loggedInSuccessfully()
         }
@@ -203,6 +191,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
             NSUserDefaults.standardUserDefaults().setObject(self.accessToken, forKey: "access_token")
+            NSUserDefaults.standardUserDefaults().synchronize()
             print(self.accessToken)
             self.loggedInSuccessfully()
         }
