@@ -20,9 +20,10 @@ class swiftyJsonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //addRestaurant()
-        deleteRestaurant()
+        addRestaurant()
+        //deleteRestaurant()
         getRestaurants()
+        getRestaurantDetail()
         
         /*Alamofire.request(.GET, "https://api.yelp.com/v2/search", parameters: ["term":"food", "location":"San Francisco", "limit":"1", "oauth_consumer_key": "8HPpfMDPraCnvdfY1aBY-A"], encoding: .JSON)
         .responseJSON { response in
@@ -174,6 +175,24 @@ class swiftyJsonViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func makeCall(apiCall: String, params: [String: String], completionHandler: (Int, NSError?) -> ()) {
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/\(apiCall)", parameters: params, encoding: .JSON).responseString { response in
+            
+            guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling POST on /api/users/\(apiCall)")
+                print(response.result.error!)
+                return
+            }
+            
+            if let value: Int = response.response!.statusCode {
+                // handle the results as JSON, without a bunch of nested if loops
+                completionHandler(value, response.result.error)
+            }
+            
+        }
+    }
+    
     func makeJsonCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
         Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/\(apiCall)", parameters: params, encoding: .JSON).responseJSON { response in
             
@@ -211,9 +230,9 @@ class swiftyJsonViewController: UIViewController {
         let restaurantid = "bamboo-bistro-nashville"
         let parameters = ["access_token": accesstoken, "restaurantid": restaurantid]
         
-        makeJsonCall("addRestaurant", params:parameters) {responseCode, responseJson, error in
+        makeCall("addRestaurant", params:parameters) {responseCode, error in
+            print("AddRestaurant results")
             print(responseCode)
-            print(responseJson)
             print(error)
         }
     }
@@ -223,7 +242,20 @@ class swiftyJsonViewController: UIViewController {
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk"
         let restaurantid = "bamboo-bistro-nashville"
         let parameters = ["access_token": accesstoken, "restaurantid": restaurantid]
-        makeJsonCall( "deleteRestaurant", params: parameters) {responseCode, responseJson, error in
+        makeCall( "deleteRestaurant", params: parameters) {responseCode, error in
+            print("DeleteRestaurant results")
+            print(responseCode)
+            print(error)
+        }
+    }
+    
+    func getRestaurantDetail() {
+        let accesstoken =
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk"
+        let restaurantid = "bamboo-bistro-nashville"
+        let parameters = ["access_token" : accesstoken, "restaurantid" : restaurantid]
+        makeJsonCall("getRestaurant", params: parameters) {responseCode, responseJson, error in
+            print("getMatches results")
             print(responseCode)
             print(responseJson)
             print(error)
