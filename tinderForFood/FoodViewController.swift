@@ -105,6 +105,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
 //        }
     }
     
+    
+    
     //MARK: IBActions
     @IBAction func leftButtonTapped() {
         kolodaView?.swipe(SwipeResultDirection.Left)
