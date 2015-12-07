@@ -18,6 +18,7 @@ class RestaurantViewController: UIViewController {
     @IBOutlet weak var hoursLabel: UILabel!
     
     var restaurantData = [String:String]()
+    let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token")
     
     override func viewDidLoad() {
         super.viewDidLoad()

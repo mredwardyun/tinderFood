@@ -9,12 +9,17 @@
 import UIKit
 import Koloda
 import pop
+import Alamofire
+import SwiftyJSON
 
 private let numberOfCards: UInt = 5
 private let frameAnimationSpringBounciness:CGFloat = 9
 private let frameAnimationSpringSpeed:CGFloat = 16
 private let kolodaCountOfVisibleCards = 2
 private let kolodaAlphaValueSemiTransparent:CGFloat = 0
+
+let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token")
+
 
 class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate {
 
@@ -30,6 +35,29 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
     }
     
+    // MARK: Networking (Alamofire)
+    func makeJsonCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
+        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/\(apiCall)", parameters: params, encoding: .JSON).responseJSON { response in
+            
+            guard response.result.error == nil else {
+                // got an error in getting the data, need to handle it
+                print("error calling POST on /api/\(apiCall)")
+                print(response.result.error!)
+                return
+            }
+            
+            if let value: AnyObject = response.result.value {
+                // handle the results as JSON, without a bunch of nested if loops
+                let responseJson = JSON(value)
+                completionHandler(response.response!.statusCode, responseJson, response.result.error)
+            }
+            
+        }
+    }
+
+    func findNearbyRestaurants() {
+        
+    }
     
     //MARK: IBActions
     @IBAction func leftButtonTapped() {

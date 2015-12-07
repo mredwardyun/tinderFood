@@ -9,8 +9,9 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import CoreLocation
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, CLLocationManagerDelegate {
     
     private var consumerKey = "8HPpfMDPraCnvdfY1aBY-A"
     private var consumerSecret = "1xtpMhhk--CQDDz5v72AwMM_K1k"
@@ -18,6 +19,9 @@ class LoginViewController: UIViewController {
     private var tokenSecret = "0hmsBuZ2hGtFTm80Gt-iveENveI"
     
     private var accessToken = ""
+    let loginSegueIdentifier = "loginSegue"
+    
+    
     
     @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var emailLabel: UILabel!
@@ -34,7 +38,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            }
+        
+        
+    }
+    
+    // MARK: CoreLocation
+
     
     // MARK: Networking (Alamofire)
     func makeJsonCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
@@ -50,7 +59,7 @@ class LoginViewController: UIViewController {
             if let value: AnyObject = response.result.value {
                 // handle the results as JSON, without a bunch of nested if loops
                 let responseJson = JSON(value)
-
+                
                 completionHandler(response.response!.statusCode, responseJson, response.result.error)
             }
             
@@ -109,18 +118,14 @@ class LoginViewController: UIViewController {
         let username = usernameTextField.text!
         let email = emailTextField.text!
         let password = passwordTextField.text!
-//        let parameters = ["username": username, "email": email, "password": password]
-//        makeJsonCall("login", params: parameters) { responseCode, responseJson, error in
-//            print(responseCode)
-//            self.accessToken = responseJson["access_token"].stringValue
-//            print(self.accessToken)
-//        }
         let parameters = ["username": username, "email": email, "password": password]
-        print(parameters)
+        
         makeJsonCall("login", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
+            NSUserDefaults.standardUserDefaults().setObject(self.accessToken, forKey: "access_token")
             print(self.accessToken)
+            self.loggedInSuccessfully()
         }
     }
     
@@ -174,7 +179,7 @@ class LoginViewController: UIViewController {
                                 "Email has already been used. Try a new one.", preferredStyle: UIAlertControllerStyle.Alert)
                             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
                             self.presentViewController(alertController, animated: true, completion: nil)
-
+                            
                         }
                     }
                 }
@@ -197,8 +202,14 @@ class LoginViewController: UIViewController {
         makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
+            NSUserDefaults.standardUserDefaults().setObject(self.accessToken, forKey: "access_token")
             print(self.accessToken)
+            self.loggedInSuccessfully()
         }
+    }
+    
+    func loggedInSuccessfully() {
+        performSegueWithIdentifier(loginSegueIdentifier, sender: self)
     }
     
     @IBAction func segmentChanged(sender: AnyObject) {
