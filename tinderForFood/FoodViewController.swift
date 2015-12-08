@@ -38,10 +38,12 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     var imageCache = [String : UIImage]()
     var offsetCounter = 0
     
+    let metersToMiles = 1609.34
+    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token") as? String
         print(accessToken)
         
@@ -63,8 +65,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.location == nil {
             self.location = locations[0] as CLLocation
-//            findNearbyRestaurants()
-            findNearbyRestaurantWithOffset()
+            findNearbyRestaurants()
+            //            findNearbyRestaurantWithOffset()
         }
     }
     
@@ -114,7 +116,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         } else {
             print("locationManager.location is nil: \(self.location)")
         }
-
+        
     }
     
     func loadRestaurants(restaurants: JSON) {
@@ -146,14 +148,14 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func downloadImage(url: NSURL, index: Int) {
-//        print("Download Started")
-//        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        //        print("Download Started")
+        //        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
         getDataFromUrl(url) { (data, response, error)  in
             // TODO: Change to HTTPS (and fix Info.plist)
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
-//                print(response?.suggestedFilename ?? "")
-//                print("Download Finished")
+                //                print(response?.suggestedFilename ?? "")
+                //                print("Download Finished")
                 let image = UIImage(data: data)
                 self.loadedBusinesses[index].image = image
             }
@@ -181,7 +183,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
             print(error)
         }
     }
-
+    
     
     //MARK: IBActions
     @IBAction func leftButtonTapped() {
@@ -202,23 +204,23 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
-//        let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-////        if Int(index) < loadedBusinesses.count {
-//            if let image = loadedBusinesses[Int(index)].image {
-//                imageView.image = image
-//                print("loading this business: \(loadedBusinesses[Int(index)].name) with image: \(loadedBusinesses[Int(index)].image_url)")
-//            }
-////        }
-//        return imageView
+        //        let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+        ////        if Int(index) < loadedBusinesses.count {
+        //            if let image = loadedBusinesses[Int(index)].image {
+        //                imageView.image = image
+        //                print("loading this business: \(loadedBusinesses[Int(index)].name) with image: \(loadedBusinesses[Int(index)].image_url)")
+        //            }
+        ////        }
+        //        return imageView
         
         let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
         if let rowData: Business = self.loadedBusinesses[Int(index)],
             urlString = rowData.image_url,
-            imgURL = NSURL(string: urlString) {
+            imgURL = NSURL(string: urlString){
                 imageView.image = UIImage(named: "Blank52")
                 if let img = imageCache[urlString] {
                     print("CACHED")
-//                    imageView.image = img
+                    //                    imageView.image = img
                     self.kolodaView?.swipe(SwipeResultDirection.Right)
                 }
                 else {
@@ -239,8 +241,42 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                         }
                     }
                     dataTask.resume()
-                    
                 }
+                if let name = rowData.name, isClosed = rowData.isClosed, distance = rowData.distance {
+                    let nameLabel = UILabel()
+                    nameLabel.text = name
+                    nameLabel.textColor = UIColor.whiteColor()
+                    nameLabel.font = UIFont(name: "System", size: 26)
+                    nameLabel.translatesAutoresizingMaskIntoConstraints = false
+                    let distanceLabel = UILabel()
+                    let distanceInMiles = Double(round(distance / metersToMiles * 100) / 100 )
+                    distanceLabel.text = "\(distanceInMiles) mi. away"
+                    distanceLabel.textColor = UIColor.whiteColor()
+                    distanceLabel.font = UIFont(name: "System", size: 20.0)
+                    distanceLabel.translatesAutoresizingMaskIntoConstraints = false
+                    imageView.addSubview(nameLabel)
+                    imageView.addSubview(distanceLabel)
+                    
+                    //Constraints
+                    let distanceBottomConstraint = NSLayoutConstraint(item: distanceLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -60)
+                    let distanceLeadingConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -160)
+                    let nameLeadingConstraint = NSLayoutConstraint(item: nameLabel, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
+                    let nameBottomConstraint = NSLayoutConstraint(item: nameLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: -10)
+                    imageView.addConstraint(distanceBottomConstraint)
+                    imageView.addConstraint(distanceLeadingConstraint)
+                    imageView.addConstraint(nameLeadingConstraint)
+                    imageView.addConstraint(nameBottomConstraint)
+                    
+                    // isClosed
+                    imageView.layer.borderWidth = 1
+                    if isClosed {
+                        imageView.layer.borderColor = UIColor.redColor().CGColor
+                    } else {
+                        imageView.layer.borderColor = UIColor.greenColor().CGColor
+                    }
+                }
+                
+                
         }
         return imageView
     }
@@ -286,7 +322,4 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
 }
 
-extension UIImageView {
-    
-}
 

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0C31BF501EE00457024 /* AppDelegate.swift */; };
-		8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0C51BF501EE00457024 /* FoodViewController.swift */; };
 		8027D0C91BF501EE00457024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0C71BF501EE00457024 /* Main.storyboard */; };
 		8027D0CB1BF501EE00457024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CA1BF501EE00457024 /* Assets.xcassets */; };
 		8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */; };
@@ -16,6 +15,8 @@
 		8027D0E41BF501EE00457024 /* tinderForFoodUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */; };
 		805310431BFE4999004D6A09 /* CustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805310421BFE4999004D6A09 /* CustomFoodView.swift */; };
 		805C36AE1C0E0D0800ADD259 /* RestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */; };
+		805D1FB71C17101B00BFACA3 /* FoodCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 805D1FB61C17101A00BFACA3 /* FoodCardView.xib */; };
+		805D1FB91C1713AA00BFACA3 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805D1FB81C1713AA00BFACA3 /* FoodViewController.swift */; };
 		808560F01C167AEF00A43F5A /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808560EF1C167AEF00A43F5A /* Business.swift */; };
 		808B87781BFE4A55009A4751 /* CustomOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 808B87771BFE4A55009A4751 /* CustomOverlayView.xib */; };
 		808B877A1BFED276009A4751 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808B87791BFED276009A4751 /* MatchesViewController.swift */; };
@@ -51,7 +52,6 @@
 		7CAA783074CB74D2593705D4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8027D0C01BF501EE00457024 /* munchie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = munchie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0C31BF501EE00457024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8027D0C51BF501EE00457024 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		8027D0C81BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8027D0CA1BF501EE00457024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8027D0CD1BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +64,8 @@
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		805310421BFE4999004D6A09 /* CustomFoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFoodView.swift; sourceTree = "<group>"; };
 		805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewController.swift; sourceTree = "<group>"; };
+		805D1FB61C17101A00BFACA3 /* FoodCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodCardView.xib; sourceTree = "<group>"; };
+		805D1FB81C1713AA00BFACA3 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		808560EF1C167AEF00A43F5A /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		808B87771BFE4A55009A4751 /* CustomOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlayView.xib; sourceTree = "<group>"; };
 		808B87791BFED276009A4751 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
@@ -188,10 +190,10 @@
 		808B87811C012F4E009A4751 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				8027D0C51BF501EE00457024 /* FoodViewController.swift */,
 				80E1D9621C10AE6400631A79 /* LoginViewController.swift */,
 				808B87791BFED276009A4751 /* MatchesViewController.swift */,
 				805C36AD1C0E0D0800ADD259 /* RestaurantViewController.swift */,
+				805D1FB81C1713AA00BFACA3 /* FoodViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -214,6 +216,7 @@
 				8027D0CC1BF501EE00457024 /* LaunchScreen.storyboard */,
 				808B877E1C012F43009A4751 /* GalleryTableViewCell.xib */,
 				808B87771BFE4A55009A4751 /* CustomOverlayView.xib */,
+				805D1FB61C17101A00BFACA3 /* FoodCardView.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				805D1FB71C17101B00BFACA3 /* FoodCardView.xib in Resources */,
 				8027D0CE1BF501EE00457024 /* LaunchScreen.storyboard in Resources */,
 				8027D0CB1BF501EE00457024 /* Assets.xcassets in Resources */,
 				808B87801C012F43009A4751 /* GalleryTableViewCell.xib in Resources */,
@@ -405,11 +409,11 @@
 			files = (
 				80E1D9631C10AE6400631A79 /* LoginViewController.swift in Sources */,
 				808B877C1BFEE250009A4751 /* RestaurantTableViewCell.swift in Sources */,
+				805D1FB91C1713AA00BFACA3 /* FoodViewController.swift in Sources */,
 				805C36AE1C0E0D0800ADD259 /* RestaurantViewController.swift in Sources */,
 				808560F01C167AEF00A43F5A /* Business.swift in Sources */,
 				805310431BFE4999004D6A09 /* CustomFoodView.swift in Sources */,
 				808B877F1C012F43009A4751 /* MatchPhotoCell.swift in Sources */,
-				8027D0C61BF501EE00457024 /* FoodViewController.swift in Sources */,
 				80F93EB01C0C070900382FFF /* GalleryPhotoCell.swift in Sources */,
 				808B877A1BFED276009A4751 /* MatchesViewController.swift in Sources */,
 				8027D0C41BF501EE00457024 /* AppDelegate.swift in Sources */,

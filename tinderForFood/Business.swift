@@ -40,7 +40,7 @@ class Business: CustomStringConvertible {
         if let location = json["location"] as? JSON {
             self.location = location
         }
-        if let isClosed = json["id"].bool {
+        if let isClosed = json["is_closed"].bool {
             self.isClosed = isClosed
         }
         if let distance = json["distance"].double {

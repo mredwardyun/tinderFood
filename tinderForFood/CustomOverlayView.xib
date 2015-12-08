@@ -15,14 +15,32 @@
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <animations/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-WB-Ptk">
+                    <rect key="frame" x="78" y="504" width="42" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gR-nb-Sid">
+                    <rect key="frame" x="78" y="462" width="42" height="21"/>
+                    <animations/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="RLC-WB-Ptk" firstAttribute="top" secondItem="2gR-nb-Sid" secondAttribute="bottom" constant="21" id="FnW-dE-b9e"/>
+                <constraint firstItem="2gR-nb-Sid" firstAttribute="leading" secondItem="RLC-WB-Ptk" secondAttribute="leading" id="H2T-lf-mCh"/>
                 <constraint firstItem="hdc-En-8Zg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aH7-BK-4ut"/>
+                <constraint firstItem="hdc-En-8Zg" firstAttribute="leading" secondItem="RLC-WB-Ptk" secondAttribute="trailing" constant="-120" id="avG-Tv-0UL"/>
                 <constraint firstAttribute="trailing" secondItem="hdc-En-8Zg" secondAttribute="trailing" id="fzA-As-eYT"/>
                 <constraint firstItem="hdc-En-8Zg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hzX-rL-yEl"/>
                 <constraint firstAttribute="bottom" secondItem="hdc-En-8Zg" secondAttribute="bottom" id="kFz-T7-ciP"/>
+                <constraint firstItem="RLC-WB-Ptk" firstAttribute="top" secondItem="hdc-En-8Zg" secondAttribute="bottom" constant="-96" id="lmP-eS-mwV"/>
             </constraints>
         </view>
     </objects>
