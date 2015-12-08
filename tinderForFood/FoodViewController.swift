@@ -49,7 +49,6 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
-        findNearbyRestaurants()
         
         // TODO: Callbacks
         //        addRestaurant()
@@ -62,10 +61,14 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         kolodaView.dataSource = self
         kolodaView.delegate = self
         self.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.location = locations[0] as CLLocation
+        if self.location == nil {
+            self.location = locations[0] as CLLocation
+            findNearbyRestaurants()
+        }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -73,44 +76,25 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     // MARK: Networking (Alamofire)
-    func makeJsonCall(apiCall: String, params: [String: String], completionHandler: (Int, JSON, NSError?) -> ()) {
-        Alamofire.request(.POST, "https://tinder-for-food.herokuapp.com/api/users/\(apiCall)", parameters: params, encoding: .JSON).responseJSON { response in
-            
-            guard response.result.error == nil else {
-                // got an error in getting the data, need to handle it
-                print("error calling POST on /api/users/\(apiCall)")
-                print(response.result.error!)
-                return
-            }
-            
-            if let value: AnyObject = response.result.value {
-                // handle the results as JSON, without a bunch of nested if loops
-                let responseJson = JSON(value)
-                completionHandler(response.response!.statusCode, responseJson, response.result.error)
-            }
-            
-        }
-    }
-    
     func findNearbyRestaurants() {
-        //        if self.location != nil {
-        if accessToken != nil {
-            //                let lat = String(location.coordinate.latitude)
-            //                let long = String(location.coordinate.longitude)
-            var params = ["access_token": accessToken!, "latitude": "40.20", "longitude": "-79.5"]
-            print("json params: \(params)")
-            makeJsonCall("findrestaurants", params: params) { responseCode, responseJson, error in
-                print("response code is \(responseCode)")
-                //print("response json is \(responseJson)")
-                print("response error is \(error)")
-                self.loadRestaurants(responseJson)
+        if self.location != nil {
+            if accessToken != nil {
+                let lat = String(location.coordinate.latitude)
+                let long = String(location.coordinate.longitude)
+                let params = ["access_token": accessToken!, "latitude": lat, "longitude": long]
+                print("json params: \(params)")
+                loginViewController.makeJsonCall("users/findrestaurants", params: params) { responseCode, responseJson, error in
+                    print("response code is \(responseCode)")
+                    //print("response json is \(responseJson)")
+                    print("response error is \(error)")
+                    self.loadRestaurants(responseJson)
+                }
+            } else {
+                print("accessToken is nil")
             }
         } else {
-            print("accessToken is nil")
+            print("locationManager.location is nil: \(self.location)")
         }
-        //        } else {
-        //            print("locationManager.location is nil")
-        //        }
     }
     
     func loadRestaurants(restaurants: JSON) {
@@ -122,20 +106,14 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
             for business in businesses {
                 let myBusiness = Business(json: business)
                 if let string = myBusiness.image_url {
-                    if let url = NSURL(string: string) {
-                        downloadImage(url, index: counter + 1)
+                    if let url = NSURL(string: string.stringByReplacingOccurrencesOfString("ms.jpg", withString: "ls.jpg")) {
+                        downloadImage(url, index: counter)
                     } else {
                         print("Url invalid: \(NSURL(string: string))")
                     }
                 } else {
                     print ("String invalid: \(myBusiness.image_url)")
                 }
-                //let urlString = myBusiness.image_url!
-                //                if let url = NSURL(string: (myBusiness.image_url?.stringByReplacingOccurrencesOfString("\\", withString: ""))!){
-                //                    downloadImage(url, index: counter + 1)
-                //                } else {
-                //                    print("url invalid: \(myBusiness.image_url?.stringByReplacingOccurrencesOfString("\\", withString: ""))")
-                //                }
                 loadedBusinesses.append(Business(json: business))
                 counter++
             }
@@ -149,16 +127,17 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func downloadImage(url: NSURL, index: Int) {
-        print("Download Started")
-        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+//        print("Download Started")
+//        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
         getDataFromUrl(url) { (data, response, error)  in
+            // TODO: Change to HTTPS (and fix Info.plist)
             dispatch_async(dispatch_get_main_queue()) { () -> Void in
                 guard let data = data where error == nil else { return }
-                print(response?.suggestedFilename ?? "")
-                print("Download Finished")
+//                print(response?.suggestedFilename ?? "")
+//                print("Download Finished")
                 let image = UIImage(data: data)
                 self.loadedBusinesses[index].image = image
-                kolodaView.reloadData()
+                self.kolodaView.reloadData()
                 
             }
         }
@@ -168,7 +147,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     func getRestaurants() {
         let parameters = ["access_token": accessToken!]
         
-        makeJsonCall("users/getRestaurants", params: parameters) { responseCode, responseJson, error in
+        loginViewController.makeJsonCall("users/getRestaurants", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
             print(responseJson)
             print(error)
@@ -202,7 +181,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         let accesstoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk"
         let restaurantid = "bamboo-bistro-nashville"
         let parameters = ["access_token" : accesstoken, "restaurantid" : restaurantid]
-        makeJsonCall("getRestaurant", params: parameters) {responseCode, responseJson, error in
+        loginViewController.makeJsonCall("users/getRestaurant", params: parameters) {responseCode, responseJson, error in
             print("getMatches results")
             print(responseCode)
             print(responseJson)
@@ -229,13 +208,13 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     
     //MARK: KolodaViewDataSource
     func kolodaNumberOfCards(koloda: KolodaView) -> UInt {
-        return numberOfCards
+        return UInt(loadedBusinesses.count)
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
         let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
         if Int(index) < loadedBusinesses.count {
-            if let image = loadedBusinesses[Int(index + 1)].image {
+            if let image = loadedBusinesses[Int(index)].image {
                 imageView.image = image
             }
         }
@@ -278,7 +257,9 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         animation.springSpeed = frameAnimationSpringSpeed
         return animation
     }
-    
+}
+
+extension UIImageView {
     
 }
 
