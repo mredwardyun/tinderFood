@@ -34,6 +34,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     let locationManager = CLLocationManager()
     var location: CLLocation!
     
+    var loadedBusinesses: [Business] = []
+    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +52,9 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         findNearbyRestaurants()
         
         // TODO: Callbacks
-//        addRestaurant()
-//        deleteRestaurant()
-//        getRestaurants()
+        //        addRestaurant()
+        //        deleteRestaurant()
+        //        getRestaurants()
         
         // Koloda set up
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
@@ -91,26 +93,75 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func findNearbyRestaurants() {
-//        if self.location != nil {
-            if accessToken != nil {
-//                let lat = String(location.coordinate.latitude)
-//                let long = String(location.coordinate.longitude)
-                var params = ["access_token": accessToken!, "latitude": "40.20", "longitude": "-79.5"]
-                print("json params: \(params)")
-                makeJsonCall("findrestaurants", params: params) { responseCode, responseJson, error in
-                    print("response code is \(responseCode)")
-                    print("response json is \(responseJson)")
-                    print("response error is \(error)")
-                    for response in responseJson {
-                        
-                    }
-                }
-            } else {
-                print("accessToken is nil")
+        //        if self.location != nil {
+        if accessToken != nil {
+            //                let lat = String(location.coordinate.latitude)
+            //                let long = String(location.coordinate.longitude)
+            var params = ["access_token": accessToken!, "latitude": "40.20", "longitude": "-79.5"]
+            print("json params: \(params)")
+            makeJsonCall("findrestaurants", params: params) { responseCode, responseJson, error in
+                print("response code is \(responseCode)")
+                //print("response json is \(responseJson)")
+                print("response error is \(error)")
+                self.loadRestaurants(responseJson)
             }
-//        } else {
-//            print("locationManager.location is nil")
-//        }
+        } else {
+            print("accessToken is nil")
+        }
+        //        } else {
+        //            print("locationManager.location is nil")
+        //        }
+    }
+    
+    func loadRestaurants(restaurants: JSON) {
+        print(restaurants[0]["name"].string)
+        print("restaurants: \(restaurants.dynamicType), restaurants[0]: \(restaurants[0].dynamicType)")
+        
+        if let businesses = restaurants.array {
+            var counter:Int = 0
+            for business in businesses {
+                let myBusiness = Business(json: business)
+                if let string = myBusiness.image_url {
+                    if let url = NSURL(string: string) {
+                        downloadImage(url, index: counter + 1)
+                    } else {
+                        print("Url invalid: \(NSURL(string: string))")
+                    }
+                } else {
+                    print ("String invalid: \(myBusiness.image_url)")
+                }
+                //let urlString = myBusiness.image_url!
+                //                if let url = NSURL(string: (myBusiness.image_url?.stringByReplacingOccurrencesOfString("\\", withString: ""))!){
+                //                    downloadImage(url, index: counter + 1)
+                //                } else {
+                //                    print("url invalid: \(myBusiness.image_url?.stringByReplacingOccurrencesOfString("\\", withString: ""))")
+                //                }
+                loadedBusinesses.append(Business(json: business))
+                counter++
+            }
+        }
+    }
+    
+    func getDataFromUrl(url:NSURL, completion: ((data: NSData?, response: NSURLResponse?, error: NSError? ) -> Void)) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data, response, error) in
+            completion(data: data, response: response, error: error)
+            }.resume()
+    }
+    
+    func downloadImage(url: NSURL, index: Int) {
+        print("Download Started")
+        print("lastPathComponent: " + (url.lastPathComponent ?? ""))
+        getDataFromUrl(url) { (data, response, error)  in
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                guard let data = data where error == nil else { return }
+                print(response?.suggestedFilename ?? "")
+                print("Download Finished")
+                let image = UIImage(data: data)
+                self.loadedBusinesses[index].image = image
+                kolodaView.reloadData()
+                
+            }
+        }
     }
     
     // MARK: EMMA'S STUFF
@@ -182,7 +233,13 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
-        return UIImageView(image: UIImage(named: "cards_\(index + 1)"))
+        let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+        if Int(index) < loadedBusinesses.count {
+            if let image = loadedBusinesses[Int(index + 1)].image {
+                imageView.image = image
+            }
+        }
+        return imageView
     }
     func kolodaViewForCardOverlayAtIndex(koloda: KolodaView, index: UInt) -> OverlayView? {
         return NSBundle.mainBundle().loadNibNamed("CustomOverlayView",

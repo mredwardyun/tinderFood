@@ -1,117 +1,65 @@
-//
-//  Business.swift
-//  tinderForFood
-//
-//  Created by Edward Yun on 12/7/15.
-//  Copyright © 2015 Edward Yun. All rights reserved.
-//
+////
+////  Business.swift
+////  tinderForFood
+////
+////  Created by Edward Yun on 12/7/15.
+////  Copyright © 2015 Edward Yun. All rights reserved.
+////
 
 import CoreLocation
+import Foundation
+import SwiftyJSON
 
-class Business: NSObject {
+class Business: CustomStringConvertible {
     
-    var dictionary: NSDictionary
+    var phone: String?
+    var id: String?
+    var image_url: String?
+    var image: UIImage?
+    var display_phone: String?
+    var location: JSON?
+    var isClosed: Bool?
+    var distance: Double?
+    var name: String?
+    var category: JSON?
+    var rating: Int?
     
-    init(dictionary: NSDictionary) {
-        self.dictionary = dictionary
-    }
-    
-    var name: String {
-        get {
-            return self.dictionary["name"] as! String
+    init(json: JSON) {
+        if let phone = json["phone"].string {
+            self.phone = phone
+        }
+        if let id = json["id"].string {
+            self.id = id
+        }
+        if let image_url = json["image_url"].string {
+            self.image_url = image_url
+        }
+        if let display_phone = json["display_phone"].string {
+            self.display_phone = display_phone
+        }
+        if let location = json["location"] as? JSON {
+            self.location = location
+        }
+        if let isClosed = json["id"].bool {
+            self.isClosed = isClosed
+        }
+        if let distance = json["distance"].double {
+            self.distance = distance
+        }
+        if let name = json["name"].string {
+            self.name = name
+        }
+        if let category = json["category"] as? JSON {
+            self.category = category
+        }
+        if let rating = json["rating"].int {
+            self.rating = rating
         }
     }
     
-    var imageURL: NSURL? {
-        get {
-            if let image = self.dictionary["image_url"] as? String {
-                return NSURL(string: image.stringByReplacingOccurrencesOfString("ms.jpg", withString: "ls.jpg", options: nil, range: nil))
-            }
-            return nil
-        }
-    }
-    
-    var ratingImageURL: NSURL {
-        get {
-            return NSURL(string: self.dictionary["rating_img_url_large"] as! String)!
-        }
-    }
-    
-    var reviewCount: Int {
-        get {
-            return self.dictionary["review_count"] as! Int
-        }
-    }
-    
-    var deals: Array<AnyObject>? {
-        get {
-            if let deals = self.dictionary["deals"] as? Array<AnyObject> {
-                return deals
-            }
-            return nil
-        }
-    }
-    
-    var latitude: Double? {
-        get {
-            if let location = self.dictionary["location"] as? NSDictionary {
-                if let coordinate = location["coordinate"] as? NSDictionary {
-                    return (coordinate["latitude"] as! Double)
-                }
-            }
-            return nil
-        }
-    }
-    
-    var longitude: Double? {
-        get {
-            if let location = self.dictionary["location"] as? NSDictionary {
-                if let coordinate = location["coordinate"] as? NSDictionary {
-                    return (coordinate["longitude"] as! Double)
-                }
-            }
-            return nil
-        }
-    }
-    
-    var location: CLLocation {
-        get {
-            return CLLocation(latitude: self.latitude!, longitude: self.longitude!)
-        }
-    }
-    
-    var shortAddress: String {
-        get {
-            if let location = self.dictionary["location"] as? NSDictionary {
-                if let address = location["address"] as? Array<String> {
-                    if let neighborhoods = location["neighborhoods"] as? Array<String> {
-                        return ", ".joinWithSeparator(address + [neighborhoods[0]])
-                    }
-                    return ", ".join(address)
-                }
-            }
-            return ""
-        }
-    }
-    
-    var displayAddress: String {
-        get {
-            if let location = self.dictionary["location"] as? NSDictionary {
-                if let address = location["display_address"] as? Array<String> {
-                    return ", ".join(address)
-                }
-            }
-            return ""
-        }
-    }
-    
-    var displayCategories: String {
-        get {
-            if let categories = self.dictionary["categories"] as? Array<Array<String>> {
-                return ", ".join(categories.map({ $0[0] }))
-            }
-            return ""
-        }
+    var description: String {
+        return "restaraunt: \(name)"
     }
     
 }
+
