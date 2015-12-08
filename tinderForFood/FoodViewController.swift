@@ -24,8 +24,8 @@ private var consumerSecret = "1xtpMhhk--CQDDz5v72AwMM_K1k"
 private var token = "ireJLoBsAiflg_HSScggpFpKTZ1giE8S"
 private var tokenSecret = "0hmsBuZ2hGtFTm80Gt-iveENveI"
 
-
 let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token") as? String
+let loginViewController = LoginViewController()
 
 
 class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDelegate, CLLocationManagerDelegate {
@@ -48,6 +48,11 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         locationManager.startUpdatingLocation()
         
         findNearbyRestaurants()
+        
+        // TODO: Callbacks
+//        addRestaurant()
+//        deleteRestaurant()
+//        getRestaurants()
         
         // Koloda set up
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
@@ -96,6 +101,9 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                     print("response code is \(responseCode)")
                     print("response json is \(responseJson)")
                     print("response error is \(error)")
+                    for response in responseJson {
+                        
+                    }
                 }
             } else {
                 print("accessToken is nil")
@@ -103,6 +111,52 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
 //        } else {
 //            print("locationManager.location is nil")
 //        }
+    }
+    
+    // MARK: EMMA'S STUFF
+    func getRestaurants() {
+        let parameters = ["access_token": accessToken!]
+        
+        makeJsonCall("users/getRestaurants", params: parameters) { responseCode, responseJson, error in
+            print(responseCode)
+            print(responseJson)
+            print(error)
+            
+        }
+    }
+    
+    // TODO: Make into callbacks
+    func addRestaurant() {
+        let restaurantid = "bamboo-bistro-nashville"
+        let parameters = ["access_token": accessToken!, "restaurantid": restaurantid]
+        
+        loginViewController.makeCall("users/addRestaurant", params: parameters) {responseCode, error in
+            print("AddRestaurant results")
+            print(responseCode)
+            print(error)
+        }
+    }
+    
+    func deleteRestaurant() {
+        let restaurantid = "bamboo-bistro-nashville"
+        let parameters = ["access_token": accessToken!, "restaurantid": restaurantid]
+        loginViewController.makeCall( "users/deleteRestaurant", params: parameters) {responseCode, error in
+            print("DeleteRestaurant results")
+            print(responseCode)
+            print(error)
+        }
+    }
+    
+    func getRestaurantDetail() {
+        let accesstoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk"
+        let restaurantid = "bamboo-bistro-nashville"
+        let parameters = ["access_token" : accesstoken, "restaurantid" : restaurantid]
+        makeJsonCall("getRestaurant", params: parameters) {responseCode, responseJson, error in
+            print("getMatches results")
+            print(responseCode)
+            print(responseJson)
+            print(error)
+        }
     }
     
     
