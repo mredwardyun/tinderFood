@@ -11,6 +11,7 @@ import UIKit
 class GalleryPhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    var restaurantId: String! = ""
     
     
 }

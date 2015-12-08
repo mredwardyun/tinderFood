@@ -56,20 +56,6 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
-    func getRestaurantDetail(restuarantId: String) {
-        if let token = accessToken  {
-            let parameters = ["access_token" : token, "restaurantid": restuarantId]
-            loginViewController.makeJsonCall("users/getRestaurant", params: parameters) {responseCode, responseJson, error in
-                print("getMatches results")
-                print(responseCode)
-                print(responseJson)
-                print(error)
-            }
-        } else {
-            print("Error: No access token")
-        }
-    }
-    
     func loadMatches(restaurants: JSON) {
         if let businesses = restaurants.array {
             var counter:Int = 0
@@ -101,11 +87,13 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == segueIdentifer {
-            let svc = segue.destinationViewController as! RestaurantViewController
-            svc.restaurantData = ["name": "Monell's", "address": "1234 Hello St", "distance": "1.2 mi away", "closingTime": "10pm"]
+            if let rvc = segue.destinationViewController as? RestaurantViewController {
+                rvc.restaurantId = (sender as? GalleryPhotoCell)?.restaurantId
+            }
             
         }
     }
+    
     
     //MARK: DataSource
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -124,6 +112,7 @@ class MatchesViewController: UIViewController, UICollectionViewDataSource, UICol
             urlString = rowData.image_url,
             imgURL = NSURL(string: urlString) {
                 cell.imageView?.image = UIImage(named: "Blank52")
+                cell.restaurantId = rowData.id
                 if let img = imageCache[urlString] {
                     cell.imageView?.image = img
                 }

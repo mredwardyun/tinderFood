@@ -35,6 +35,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     
     var loadedBusinesses: [Business] = []
     var accessToken: String?
+    var imageCache = [String : UIImage]()
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -182,13 +183,46 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
+//        let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+////        if Int(index) < loadedBusinesses.count {
+//            if let image = loadedBusinesses[Int(index)].image {
+//                imageView.image = image
+//                print("loading this business: \(loadedBusinesses[Int(index)].name) with image: \(loadedBusinesses[Int(index)].image_url)")
+//            }
+////        }
+//        return imageView
+        
         let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-//        if Int(index) < loadedBusinesses.count {
-            if let image = loadedBusinesses[Int(index)].image {
-                imageView.image = image
-                print("loading this business: \(loadedBusinesses[Int(index)].name) with image: \(loadedBusinesses[Int(index)].image_url)")
-            }
-//        }
+        if let rowData: Business = self.loadedBusinesses[Int(index)],
+            urlString = rowData.image_url,
+            imgURL = NSURL(string: urlString) {
+                imageView.image = UIImage(named: "Blank52")
+                if let img = imageCache[urlString] {
+                    print("CACHED")
+//                    imageView.image = img
+                    kolodaView?.swipe(SwipeResultDirection.Right)
+                }
+                else {
+                    let session = NSURLSession.sharedSession()
+                    let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                    let dataTask = session.dataTaskWithRequest(request) {
+                        (data: NSData?, response: NSURLResponse?, error: NSError?)
+                        -> Void in
+                        if error == nil && data != nil {
+                            let image = UIImage(data: data!)
+                            self.imageCache[urlString] = image
+                            dispatch_async(dispatch_get_main_queue(), {
+                                imageView.image = image
+                            })
+                        }
+                        else {
+                            print("Error: \(error!.localizedDescription)")
+                        }
+                    }
+                    dataTask.resume()
+                    
+                }
+        }
         return imageView
     }
     func kolodaViewForCardOverlayAtIndex(koloda: KolodaView, index: UInt) -> OverlayView? {
