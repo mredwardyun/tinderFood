@@ -17,10 +17,16 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
     let metersToMiles = 1609.34
     
     var restaurantId:String?
+    var fromCardView: Bool?
+    var matchSegue = "restaurantToMatchesSegue"
+    var cardSegue = "restaurantToCardsSegue"
+    var backButtonSegue: String!
+    
     let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token") as? String
     let loginViewController = LoginViewController()
     
@@ -35,6 +41,16 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
+        if let bool = fromCardView {
+            if bool {
+                backButtonSegue = cardSegue
+            } else {
+                backButtonSegue = matchSegue
+            }
+        } else {
+            backButtonSegue = matchSegue
+        }
+
         getRestaurantDetail(restaurantId)
         
     }
@@ -43,6 +59,10 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
         if self.location == nil {
             self.location = locations[0] as CLLocation
         }
+    }
+    
+    @IBAction func didTapBackButton(sender: AnyObject) {
+        performSegueWithIdentifier(backButtonSegue, sender: sender)
     }
     
     func getRestaurantDetail(restuarantId: String?) {

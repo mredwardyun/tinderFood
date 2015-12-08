@@ -39,6 +39,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     var offsetCounter = 0
     
     let metersToMiles = 1609.34
+    private let segueIdentifer = "cardToRestaurantSegue"
+
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -62,12 +64,22 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == segueIdentifer {
+            if let rvc = segue.destinationViewController as? RestaurantViewController {
+                rvc.restaurantId = loadedBusinesses[(sender as? Int)!].id
+                rvc.fromCardView = true
+            }
+            
+        }
+    }
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.location == nil {
             self.location = locations[0] as CLLocation
-            findNearbyRestaurants()
-            //            findNearbyRestaurantWithOffset()
+            findNearbyRestaurantWithOffset(self.offsetCounter)
         }
+        self.location = locations[0] as CLLocation
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -95,19 +107,20 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         }
     }
     
-    func findNearbyRestaurantWithOffset() {
+    func findNearbyRestaurantWithOffset(offset: Int) {
+        print("Offset is \(offset)")
         if self.location != nil {
             if accessToken != nil {
                 let lat = String(location.coordinate.latitude)
                 let long = String(location.coordinate.longitude)
-                let params = ["access_token": accessToken!, "latitude": lat, "longitude": long, "offset": "20"]
+                let params = ["access_token": accessToken!, "latitude": lat, "longitude": long, "offset": "\(offset*20)"]
                 print("json params: \(params)")
                 loginViewController.makeJsonCall("users/findRestaurantsOffset", params: params) { responseCode, responseJson, error in
                     print("response code is \(responseCode)")
                     //print("response json is \(responseJson)")
                     print("response error is \(error)")
                     self.loadedBusinesses = [Business]()
-                    print("LOADED: \(self.loadedBusinesses)")
+                    print("LOADING: \(self.loadedBusinesses)")
                     self.loadRestaurants(responseJson)
                 }
             } else {
@@ -125,7 +138,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
             for business in businesses {
                 let myBusiness = Business(json: business)
                 if let string = myBusiness.image_url {
-                    if let url = NSURL(string: string.stringByReplacingOccurrencesOfString("ms.jpg", withString: "ls.jpg")) {
+                    if let url = NSURL(string: string.stringByReplacingOccurrencesOfString("ms.jpg", withString: "o.jpg")) {
                         downloadImage(url, index: counter)
                     } else {
                         print("Url invalid: \(NSURL(string: string))")
@@ -213,15 +226,15 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         ////        }
         //        return imageView
         
-        let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
+        let imageView = UIImageView(frame: kolodaView.frameForCardAtIndex(index))
         if let rowData: Business = self.loadedBusinesses[Int(index)],
             urlString = rowData.image_url,
             imgURL = NSURL(string: urlString){
                 imageView.image = UIImage(named: "Blank52")
                 if let img = imageCache[urlString] {
-                    print("CACHED")
-                    //                    imageView.image = img
-                    self.kolodaView?.swipe(SwipeResultDirection.Right)
+//                    findNearbyRestaurantWithOffset(self.offsetCounter++)
+//                    self.kolodaView.reloadData()
+                    imageView.hidden = true
                 }
                 else {
                     let session = NSURLSession.sharedSession()
@@ -274,7 +287,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                     titleView.addConstraint(nameBottomConstraint)
                     titleView.addConstraint(nameTopConstraint)
                     
-                    let titleBottomConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -50)
+                    let titleBottomConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -20)
                     let titleLeadingConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 50)
                     
                     imageView.addSubview(titleView)
@@ -310,11 +323,12 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     func kolodaDidRunOutOfCards(koloda: KolodaView) {
         //Example: reloading
         kolodaView.resetCurrentCardNumber()
-        findNearbyRestaurantWithOffset()
+        self.offsetCounter++
+        findNearbyRestaurantWithOffset(self.offsetCounter)
     }
     
     func kolodaDidSelectCardAtIndex(koloda: KolodaView, index: UInt) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://yalantis.com/")!)
+        performSegueWithIdentifier(segueIdentifer, sender: index)
     }
     
     func kolodaShouldApplyAppearAnimation(koloda: KolodaView) -> Bool {
