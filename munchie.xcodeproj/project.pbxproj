@@ -49,17 +49,17 @@
 		69B560C316B690A1B8A029DC /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C6D77292848FE5F007D104 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		7CAA783074CB74D2593705D4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		8027D0C01BF501EE00457024 /* tinderForFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tinderForFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027D0C01BF501EE00457024 /* munchie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = munchie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0C31BF501EE00457024 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8027D0C51BF501EE00457024 /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		8027D0C81BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8027D0CA1BF501EE00457024 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8027D0CD1BF501EE00457024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8027D0CF1BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8027D0D41BF501EE00457024 /* tinderForFoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027D0D41BF501EE00457024 /* munchie.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = munchie.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodTests.swift; sourceTree = "<group>"; };
 		8027D0DA1BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tinderForFoodUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8027D0DF1BF501EE00457024 /* munchie.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = munchie.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tinderForFoodUITests.swift; sourceTree = "<group>"; };
 		8027D0E51BF501EE00457024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		805310421BFE4999004D6A09 /* CustomFoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFoodView.swift; sourceTree = "<group>"; };
@@ -123,9 +123,9 @@
 		8027D0B71BF501EE00457024 = {
 			isa = PBXGroup;
 			children = (
-				8027D0C21BF501EE00457024 /* tinderForFood */,
-				8027D0D71BF501EE00457024 /* tinderForFoodTests */,
-				8027D0E21BF501EE00457024 /* tinderForFoodUITests */,
+				8027D0C21BF501EE00457024 /* munchie */,
+				8027D0D71BF501EE00457024 /* munchieTests */,
+				8027D0E21BF501EE00457024 /* munchieUITests */,
 				8027D0C11BF501EE00457024 /* Products */,
 				7CD8643F1DB45B2668593613 /* Pods */,
 				177D466F88ED997F4B05B9E6 /* Frameworks */,
@@ -135,14 +135,14 @@
 		8027D0C11BF501EE00457024 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8027D0C01BF501EE00457024 /* tinderForFood.app */,
-				8027D0D41BF501EE00457024 /* tinderForFoodTests.xctest */,
-				8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */,
+				8027D0C01BF501EE00457024 /* munchie.app */,
+				8027D0D41BF501EE00457024 /* munchie.xctest */,
+				8027D0DF1BF501EE00457024 /* munchie.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8027D0C21BF501EE00457024 /* tinderForFood */ = {
+		8027D0C21BF501EE00457024 /* munchie */ = {
 			isa = PBXGroup;
 			children = (
 				8027D0C31BF501EE00457024 /* AppDelegate.swift */,
@@ -153,24 +153,27 @@
 				8027D0CA1BF501EE00457024 /* Assets.xcassets */,
 				8027D0CF1BF501EE00457024 /* Info.plist */,
 			);
+			name = munchie;
 			path = tinderForFood;
 			sourceTree = "<group>";
 		};
-		8027D0D71BF501EE00457024 /* tinderForFoodTests */ = {
+		8027D0D71BF501EE00457024 /* munchieTests */ = {
 			isa = PBXGroup;
 			children = (
 				8027D0D81BF501EE00457024 /* tinderForFoodTests.swift */,
 				8027D0DA1BF501EE00457024 /* Info.plist */,
 			);
+			name = munchieTests;
 			path = tinderForFoodTests;
 			sourceTree = "<group>";
 		};
-		8027D0E21BF501EE00457024 /* tinderForFoodUITests */ = {
+		8027D0E21BF501EE00457024 /* munchieUITests */ = {
 			isa = PBXGroup;
 			children = (
 				8027D0E31BF501EE00457024 /* tinderForFoodUITests.swift */,
 				8027D0E51BF501EE00457024 /* Info.plist */,
 			);
+			name = munchieUITests;
 			path = tinderForFoodUITests;
 			sourceTree = "<group>";
 		};
@@ -218,9 +221,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8027D0BF1BF501EE00457024 /* tinderForFood */ = {
+		8027D0BF1BF501EE00457024 /* munchie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFood" */;
+			buildConfigurationList = 8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "munchie" */;
 			buildPhases = (
 				EAC802EA7916441E907269A9 /* Check Pods Manifest.lock */,
 				8027D0BC1BF501EE00457024 /* Sources */,
@@ -233,14 +236,14 @@
 			);
 			dependencies = (
 			);
-			name = tinderForFood;
+			name = munchie;
 			productName = tinderForFood;
-			productReference = 8027D0C01BF501EE00457024 /* tinderForFood.app */;
+			productReference = 8027D0C01BF501EE00457024 /* munchie.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8027D0D31BF501EE00457024 /* tinderForFoodTests */ = {
+		8027D0D31BF501EE00457024 /* munchieTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodTests" */;
+			buildConfigurationList = 8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "munchieTests" */;
 			buildPhases = (
 				8027D0D01BF501EE00457024 /* Sources */,
 				8027D0D11BF501EE00457024 /* Frameworks */,
@@ -251,14 +254,14 @@
 			dependencies = (
 				8027D0D61BF501EE00457024 /* PBXTargetDependency */,
 			);
-			name = tinderForFoodTests;
+			name = munchieTests;
 			productName = tinderForFoodTests;
-			productReference = 8027D0D41BF501EE00457024 /* tinderForFoodTests.xctest */;
+			productReference = 8027D0D41BF501EE00457024 /* munchie.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8027D0DE1BF501EE00457024 /* tinderForFoodUITests */ = {
+		8027D0DE1BF501EE00457024 /* munchieUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodUITests" */;
+			buildConfigurationList = 8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "munchieUITests" */;
 			buildPhases = (
 				8027D0DB1BF501EE00457024 /* Sources */,
 				8027D0DC1BF501EE00457024 /* Frameworks */,
@@ -269,9 +272,9 @@
 			dependencies = (
 				8027D0E11BF501EE00457024 /* PBXTargetDependency */,
 			);
-			name = tinderForFoodUITests;
+			name = munchieUITests;
 			productName = tinderForFoodUITests;
-			productReference = 8027D0DF1BF501EE00457024 /* tinderForFoodUITests.xctest */;
+			productReference = 8027D0DF1BF501EE00457024 /* munchie.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -298,7 +301,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8027D0BB1BF501EE00457024 /* Build configuration list for PBXProject "tinderForFood" */;
+			buildConfigurationList = 8027D0BB1BF501EE00457024 /* Build configuration list for PBXProject "munchie" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -311,9 +314,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8027D0BF1BF501EE00457024 /* tinderForFood */,
-				8027D0D31BF501EE00457024 /* tinderForFoodTests */,
-				8027D0DE1BF501EE00457024 /* tinderForFoodUITests */,
+				8027D0BF1BF501EE00457024 /* munchie */,
+				8027D0D31BF501EE00457024 /* munchieTests */,
+				8027D0DE1BF501EE00457024 /* munchieUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -434,12 +437,12 @@
 /* Begin PBXTargetDependency section */
 		8027D0D61BF501EE00457024 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8027D0BF1BF501EE00457024 /* tinderForFood */;
+			target = 8027D0BF1BF501EE00457024 /* munchie */;
 			targetProxy = 8027D0D51BF501EE00457024 /* PBXContainerItemProxy */;
 		};
 		8027D0E11BF501EE00457024 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8027D0BF1BF501EE00457024 /* tinderForFood */;
+			target = 8027D0BF1BF501EE00457024 /* munchie */;
 			targetProxy = 8027D0E01BF501EE00457024 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -555,7 +558,7 @@
 				INFOPLIST_FILE = tinderForFood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFood;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = munchie;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -570,7 +573,7 @@
 				INFOPLIST_FILE = tinderForFood/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFood;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = munchie;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -582,8 +585,8 @@
 				INFOPLIST_FILE = tinderForFoodTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tinderForFood.app/tinderForFood";
+				PRODUCT_NAME = munchie;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/munchie.app/munchie";
 			};
 			name = Debug;
 		};
@@ -594,8 +597,8 @@
 				INFOPLIST_FILE = tinderForFoodTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tinderForFood.app/tinderForFood";
+				PRODUCT_NAME = munchie;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/munchie.app/munchie";
 			};
 			name = Release;
 		};
@@ -605,7 +608,7 @@
 				INFOPLIST_FILE = tinderForFoodUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = munchie;
 				TEST_TARGET_NAME = tinderForFood;
 				USES_XCTRUNNER = YES;
 			};
@@ -617,7 +620,7 @@
 				INFOPLIST_FILE = tinderForFoodUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.phoenix.tinderForFoodUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = munchie;
 				TEST_TARGET_NAME = tinderForFood;
 				USES_XCTRUNNER = YES;
 			};
@@ -626,7 +629,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8027D0BB1BF501EE00457024 /* Build configuration list for PBXProject "tinderForFood" */ = {
+		8027D0BB1BF501EE00457024 /* Build configuration list for PBXProject "munchie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8027D0E61BF501EE00457024 /* Debug */,
@@ -635,7 +638,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFood" */ = {
+		8027D0E81BF501EE00457024 /* Build configuration list for PBXNativeTarget "munchie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8027D0E91BF501EE00457024 /* Debug */,
@@ -644,7 +647,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodTests" */ = {
+		8027D0EB1BF501EE00457024 /* Build configuration list for PBXNativeTarget "munchieTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8027D0EC1BF501EE00457024 /* Debug */,
@@ -653,7 +656,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "tinderForFoodUITests" */ = {
+		8027D0EE1BF501EE00457024 /* Build configuration list for PBXNativeTarget "munchieUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8027D0EF1BF501EE00457024 /* Debug */,
