@@ -15,6 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        if let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token") as? String {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewControllerWithIdentifier("swipeViewController") as! UIViewController
+            self.window?.rootViewController = vc
+        }
+        
         return true
     }
 
