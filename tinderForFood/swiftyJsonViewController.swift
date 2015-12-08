@@ -20,7 +20,7 @@ class swiftyJsonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        addRestaurant()
+        //addRestaurant()
         //deleteRestaurant()
         getRestaurants()
         getRestaurantDetail()
@@ -206,7 +206,7 @@ class swiftyJsonViewController: UIViewController {
             if let value: AnyObject = response.result.value {
                 // handle the results as JSON, without a bunch of nested if loops
                 let responseJson = JSON(value)
-                
+
                 completionHandler(response.response!.statusCode, responseJson, response.result.error)
             }
             
@@ -257,7 +257,14 @@ class swiftyJsonViewController: UIViewController {
         makeJsonCall("getRestaurant", params: parameters) {responseCode, responseJson, error in
             print("getMatches results")
             print(responseCode)
+            print("printing responseJson")
             print(responseJson)
+            let json = responseJson
+            print("printing json")
+            print(json)
+            let myurl = responseJson["image_url"].string
+            print("the url is: ")
+            print(myurl)
             print(error)
         }
     }
