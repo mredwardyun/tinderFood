@@ -316,8 +316,13 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     //MARK: KolodaViewDelegate
     
     func kolodaDidSwipedCardAtIndex(koloda: KolodaView, index: UInt, direction: SwipeResultDirection) {
-        print("adding restuarant: \(loadedBusinesses[Int(index)].name)")
-        addRestaurant(Int(index))
+        if direction == SwipeResultDirection.Right {
+            print("adding restuarant: \(loadedBusinesses[Int(index)].name)")
+            addRestaurant(Int(index))
+        } else {
+            print("swipped left")
+        }
+        
     }
     
     func kolodaDidRunOutOfCards(koloda: KolodaView) {
