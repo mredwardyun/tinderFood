@@ -293,11 +293,21 @@
                                             <segue destination="h8m-VS-K0l" kind="presentation" id="xH0-bh-kCM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VDP-pS-dem">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <animations/>
+                                        <state key="normal" title="Signout"/>
+                                        <connections>
+                                            <action selector="signoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N7E-MS-VxS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.76592016643425254" green="1" blue="0.85899629089837071" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="cWX-dT-Dfn" firstAttribute="leading" secondItem="0be-PZ-JZ8" secondAttribute="leading" constant="8" id="8ap-fh-jEs"/>
+                                    <constraint firstItem="cWX-dT-Dfn" firstAttribute="leading" secondItem="0be-PZ-JZ8" secondAttribute="leading" constant="8" id="8ap-fh-jEs">
+                                        <variation key="widthClass=compact" constant="333"/>
+                                    </constraint>
                                     <constraint firstAttribute="bottom" secondItem="ee7-r1-AGJ" secondAttribute="bottom" constant="8" id="F4Q-Cb-QlU">
                                         <variation key="widthClass=compact" constant="14"/>
                                     </constraint>
@@ -305,7 +315,10 @@
                                     <constraint firstAttribute="bottom" secondItem="cWX-dT-Dfn" secondAttribute="bottom" constant="10" id="L7r-C4-ybq"/>
                                     <constraint firstAttribute="height" constant="74" id="ZuZ-4Y-wVe"/>
                                     <constraint firstItem="ee7-r1-AGJ" firstAttribute="centerX" secondItem="0be-PZ-JZ8" secondAttribute="centerX" id="akh-1j-8KZ"/>
+                                    <constraint firstItem="VDP-pS-dem" firstAttribute="leading" secondItem="0be-PZ-JZ8" secondAttribute="leading" constant="8" id="csK-99-z1Q"/>
                                     <constraint firstAttribute="trailing" secondItem="ee7-r1-AGJ" secondAttribute="trailing" constant="140" id="mYB-ie-W3H"/>
+                                    <constraint firstAttribute="trailing" secondItem="cWX-dT-Dfn" secondAttribute="trailing" constant="14" id="nKh-TI-tUa"/>
+                                    <constraint firstItem="VDP-pS-dem" firstAttribute="centerY" secondItem="ee7-r1-AGJ" secondAttribute="centerY" id="s4U-FA-nwa"/>
                                     <constraint firstAttribute="bottom" secondItem="ee7-r1-AGJ" secondAttribute="bottom" constant="9.5" id="sbC-6h-0bW">
                                         <variation key="widthClass=compact" constant="14.5"/>
                                     </constraint>
@@ -316,36 +329,44 @@
                                     <mask key="subviews">
                                         <exclude reference="ee7-r1-AGJ"/>
                                         <exclude reference="cWX-dT-Dfn"/>
+                                        <exclude reference="VDP-pS-dem"/>
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="ZuZ-4Y-wVe"/>
-                                        <exclude reference="8ap-fh-jEs"/>
-                                        <exclude reference="L7r-C4-ybq"/>
-                                        <exclude reference="tFy-oa-ARb"/>
+                                        <exclude reference="csK-99-z1Q"/>
+                                        <exclude reference="s4U-FA-nwa"/>
                                         <exclude reference="F4Q-Cb-QlU"/>
                                         <exclude reference="FNm-7K-Y5D"/>
                                         <exclude reference="akh-1j-8KZ"/>
                                         <exclude reference="mYB-ie-W3H"/>
                                         <exclude reference="sbC-6h-0bW"/>
                                         <exclude reference="tce-8t-Df3"/>
+                                        <exclude reference="8ap-fh-jEs"/>
+                                        <exclude reference="L7r-C4-ybq"/>
+                                        <exclude reference="nKh-TI-tUa"/>
+                                        <exclude reference="tFy-oa-ARb"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="ee7-r1-AGJ"/>
                                         <include reference="cWX-dT-Dfn"/>
+                                        <include reference="VDP-pS-dem"/>
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="ZuZ-4Y-wVe"/>
-                                        <include reference="8ap-fh-jEs"/>
-                                        <include reference="L7r-C4-ybq"/>
-                                        <include reference="tFy-oa-ARb"/>
+                                        <include reference="csK-99-z1Q"/>
+                                        <include reference="s4U-FA-nwa"/>
                                         <exclude reference="F4Q-Cb-QlU"/>
                                         <exclude reference="FNm-7K-Y5D"/>
                                         <include reference="akh-1j-8KZ"/>
                                         <exclude reference="mYB-ie-W3H"/>
                                         <include reference="sbC-6h-0bW"/>
                                         <exclude reference="tce-8t-Df3"/>
+                                        <exclude reference="8ap-fh-jEs"/>
+                                        <include reference="L7r-C4-ybq"/>
+                                        <include reference="nKh-TI-tUa"/>
+                                        <include reference="tFy-oa-ARb"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -461,6 +482,7 @@
                     <connections>
                         <outlet property="kolodaView" destination="pqP-Q0-jaD" id="9F3-oh-F6E"/>
                         <segue destination="dye-c1-qWe" kind="show" identifier="cardToRestaurantSegue" id="FXE-SU-ajh"/>
+                        <segue destination="0AO-L0-zOZ" kind="show" identifier="loginSegue" id="2dq-Vh-R1U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -794,8 +816,8 @@
         <image name="btn_skip_pressed" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8Lm-Nd-AoA"/>
-        <segue reference="FXE-SU-ajh"/>
+        <segue reference="xH0-bh-kCM"/>
         <segue reference="eEI-Cw-XJ3"/>
+        <segue reference="FXE-SU-ajh"/>
     </inferredMetricsTieBreakers>
 </document>

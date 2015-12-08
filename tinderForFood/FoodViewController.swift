@@ -40,6 +40,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     
     let metersToMiles = 1609.34
     private let segueIdentifer = "cardToRestaurantSegue"
+    let loginSeguieIdentifier = "loginSegue"
 
     
     //MARK: Lifecycle
@@ -209,6 +210,12 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     
     @IBAction func undoButtonTapped() {
         kolodaView?.revertAction()
+    }
+    @IBAction func signoutButtonTapped(sender: AnyObject) {
+        NSUserDefaults.standardUserDefaults().setObject("", forKey: "access_token")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        self.accessToken = ""
+        performSegueWithIdentifier(loginSeguieIdentifier, sender: sender)
     }
     
     //MARK: KolodaViewDataSource
