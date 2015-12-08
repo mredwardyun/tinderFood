@@ -243,6 +243,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                     dataTask.resume()
                 }
                 if let name = rowData.name, isClosed = rowData.isClosed, distance = rowData.distance {
+                    let titleView = UIView()
+                    titleView.translatesAutoresizingMaskIntoConstraints = false
                     let nameLabel = UILabel()
                     nameLabel.text = name
                     nameLabel.textColor = UIColor.whiteColor()
@@ -254,18 +256,31 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                     distanceLabel.textColor = UIColor.whiteColor()
                     distanceLabel.font = UIFont(name: "System", size: 20.0)
                     distanceLabel.translatesAutoresizingMaskIntoConstraints = false
-                    imageView.addSubview(nameLabel)
-                    imageView.addSubview(distanceLabel)
+                    titleView.addSubview(nameLabel)
+                    titleView.addSubview(distanceLabel)
                     
-                    //Constraints
-                    let distanceBottomConstraint = NSLayoutConstraint(item: distanceLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -60)
-                    let distanceLeadingConstraint = NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Trailing, multiplier: 1, constant: -160)
+                    // Think margins are off. this doesnt do anything
+                    titleView.backgroundColor = UIColor.grayColor()
+                    
+                    // Constraints
+                    let distanceBottomConstraint = NSLayoutConstraint(item: distanceLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.BottomMargin, multiplier: 1, constant: 0)
+                    let distanceLeadingConstraint = NSLayoutConstraint(item: distanceLabel, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.LeadingMargin, multiplier: 1, constant: 0)
                     let nameLeadingConstraint = NSLayoutConstraint(item: nameLabel, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 0)
-                    let nameBottomConstraint = NSLayoutConstraint(item: nameLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: -10)
-                    imageView.addConstraint(distanceBottomConstraint)
-                    imageView.addConstraint(distanceLeadingConstraint)
-                    imageView.addConstraint(nameLeadingConstraint)
-                    imageView.addConstraint(nameBottomConstraint)
+                    let nameBottomConstraint = NSLayoutConstraint(item: nameLabel, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: distanceLabel, attribute: NSLayoutAttribute.Top, multiplier: 1, constant: -5)
+                    let nameTopConstraint = NSLayoutConstraint(item: nameLabel, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: titleView, attribute: NSLayoutAttribute.TopMargin, multiplier: 1, constant: 0)
+                    titleView.addConstraint(distanceBottomConstraint)
+                    titleView.addConstraint(distanceLeadingConstraint)
+                    titleView.addConstraint(nameLeadingConstraint)
+                    titleView.addConstraint(nameBottomConstraint)
+                    titleView.addConstraint(nameTopConstraint)
+                    
+                    let titleBottomConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: -50)
+                    let titleLeadingConstraint = NSLayoutConstraint(item: titleView, attribute: NSLayoutAttribute.Leading, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Leading, multiplier: 1, constant: 50)
+                    
+                    imageView.addSubview(titleView)
+                    imageView.addConstraint(titleBottomConstraint)
+                    imageView.addConstraint(titleLeadingConstraint)
+
                     
                     // isClosed
                     imageView.layer.borderWidth = 1
