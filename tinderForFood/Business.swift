@@ -32,7 +32,7 @@ class Business: CustomStringConvertible {
             self.id = id
         }
         if let image_url = json["image_url"].string {
-            self.image_url = image_url
+            self.image_url = image_url.stringByReplacingOccurrencesOfString("ms.jpg", withString: "o.jpg")
         }
         if let display_phone = json["display_phone"].string {
             self.display_phone = display_phone

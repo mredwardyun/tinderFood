@@ -24,7 +24,6 @@ private var consumerSecret = "1xtpMhhk--CQDDz5v72AwMM_K1k"
 private var token = "ireJLoBsAiflg_HSScggpFpKTZ1giE8S"
 private var tokenSecret = "0hmsBuZ2hGtFTm80Gt-iveENveI"
 
-let accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token") as? String
 let loginViewController = LoginViewController()
 
 
@@ -35,13 +34,14 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     var location: CLLocation!
     
     var loadedBusinesses: [Business] = []
+    var accessToken: String?
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        accessToken = NSUserDefaults.standardUserDefaults().objectForKey("access_token") as? String
         print(accessToken)
-        
         
         // CoreLocation
         locationManager.delegate = self
@@ -98,9 +98,6 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     }
     
     func loadRestaurants(restaurants: JSON) {
-        print(restaurants[0]["name"].string)
-        print("restaurants: \(restaurants.dynamicType), restaurants[0]: \(restaurants[0].dynamicType)")
-        
         if let businesses = restaurants.array {
             var counter:Int = 0
             for business in businesses {
@@ -117,6 +114,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                 loadedBusinesses.append(Business(json: business))
                 counter++
             }
+            self.kolodaView.reloadData()
+            print("loadedBusinesses: \(loadedBusinesses)")
         }
     }
     
@@ -137,28 +136,14 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
 //                print("Download Finished")
                 let image = UIImage(data: data)
                 self.loadedBusinesses[index].image = image
-                self.kolodaView.reloadData()
-                
             }
         }
     }
     
     // MARK: EMMA'S STUFF
-    func getRestaurants() {
-        let parameters = ["access_token": accessToken!]
-        
-        loginViewController.makeJsonCall("users/getRestaurants", params: parameters) { responseCode, responseJson, error in
-            print(responseCode)
-            print(responseJson)
-            print(error)
-            
-        }
-    }
-    
-    // TODO: Make into callbacks
-    func addRestaurant() {
-        let restaurantid = "bamboo-bistro-nashville"
-        let parameters = ["access_token": accessToken!, "restaurantid": restaurantid]
+    func addRestaurant(index: Int) {
+        let restaurantId = loadedBusinesses[index].id!
+        let parameters = ["access_token": accessToken!, "restaurantid": restaurantId]
         
         loginViewController.makeCall("users/addRestaurant", params: parameters) {responseCode, error in
             print("AddRestaurant results")
@@ -167,29 +152,16 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         }
     }
     
-    func deleteRestaurant() {
-        let restaurantid = "bamboo-bistro-nashville"
-        let parameters = ["access_token": accessToken!, "restaurantid": restaurantid]
+    func deleteRestaurant(index: Int) {
+        let restaurantId = loadedBusinesses[index].id!
+        let parameters = ["access_token": accessToken!, "restaurantid": restaurantId]
         loginViewController.makeCall( "users/deleteRestaurant", params: parameters) {responseCode, error in
             print("DeleteRestaurant results")
             print(responseCode)
             print(error)
         }
     }
-    
-    func getRestaurantDetail() {
-        let accesstoken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyaWQiOjEyLCJpYXQiOjE0NDkwOTU1ODMsImV4cCI6MTQ2NDY0NzU4MywiaXNzIjoidGluZGVyLWZvci1mb29kIn0.DtUYkZ0gr9ZDuXJ8QvbkO5llVJgRCZlTIg4YMJe00xk"
-        let restaurantid = "bamboo-bistro-nashville"
-        let parameters = ["access_token" : accesstoken, "restaurantid" : restaurantid]
-        loginViewController.makeJsonCall("users/getRestaurant", params: parameters) {responseCode, responseJson, error in
-            print("getMatches results")
-            print(responseCode)
-            print(responseJson)
-            print(error)
-        }
-    }
-    
-    
+
     
     //MARK: IBActions
     @IBAction func leftButtonTapped() {
@@ -198,8 +170,6 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     
     @IBAction func rightButtonTapped() {
         kolodaView?.swipe(SwipeResultDirection.Right)
-        findNearbyRestaurants()
-        
     }
     
     @IBAction func undoButtonTapped() {
@@ -213,11 +183,12 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     
     func kolodaViewForCardAtIndex(koloda: KolodaView, index: UInt) -> UIView {
         let imageView = UIImageView(frame: CGRectMake(0, 0, 100, 100))
-        if Int(index) < loadedBusinesses.count {
+//        if Int(index) < loadedBusinesses.count {
             if let image = loadedBusinesses[Int(index)].image {
                 imageView.image = image
+                print("loading this business: \(loadedBusinesses[Int(index)].name) with image: \(loadedBusinesses[Int(index)].image_url)")
             }
-        }
+//        }
         return imageView
     }
     func kolodaViewForCardOverlayAtIndex(koloda: KolodaView, index: UInt) -> OverlayView? {
@@ -228,6 +199,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     //MARK: KolodaViewDelegate
     
     func kolodaDidSwipedCardAtIndex(koloda: KolodaView, index: UInt, direction: SwipeResultDirection) {
+        print("adding restuarant: \(loadedBusinesses[Int(index)].name)")
+        addRestaurant(Int(index))
     }
     
     func kolodaDidRunOutOfCards(koloda: KolodaView) {

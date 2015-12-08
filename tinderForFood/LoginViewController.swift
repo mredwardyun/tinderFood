@@ -15,8 +15,6 @@ class LoginViewController: UIViewController {
     private var accessToken = ""
     let loginSegueIdentifier = "loginSegue"
     
-    
-    
     @IBOutlet weak var loginSegmentedControl: UISegmentedControl!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
@@ -190,8 +188,10 @@ class LoginViewController: UIViewController {
         makeJsonCall("register", params: parameters) { responseCode, responseJson, error in
             print(responseCode)
             self.accessToken = responseJson["access_token"].stringValue
+            print("SETTING ACCESS_TOKEN")
             NSUserDefaults.standardUserDefaults().setObject(self.accessToken, forKey: "access_token")
             NSUserDefaults.standardUserDefaults().synchronize()
+            print("ACCESS TOKEN IS \(NSUserDefaults.standardUserDefaults().objectForKey("access_token"))")
             print(self.accessToken)
             self.loggedInSuccessfully()
         }
