@@ -54,6 +54,29 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
                     print(responseCode)
                     //                    print("JSON: \(responseJson)")
                     print(error)
+                    if let image_url = responseJson["image_url"].string {
+                        if let imgURL = NSURL(string: image_url.stringByReplacingOccurrencesOfString("ms.jpg", withString: "o.jpg")) {
+                            self.imageView?.image = UIImage(named: "Blank52")
+                            let session = NSURLSession.sharedSession()
+                            let request: NSURLRequest = NSURLRequest(URL: imgURL)
+                            let dataTask = session.dataTaskWithRequest(request) {
+                                (data: NSData?, response: NSURLResponse?, error: NSError?)
+                                -> Void in
+                                if error == nil && data != nil {
+                                    let image = UIImage(data: data!)
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                            self.imageView?.image = image
+                                    })
+                                }
+                                else {
+                                    print("Error: \(error!.localizedDescription)")
+                                }
+                            }
+                            dataTask.resume()
+                            
+                        }
+                        
+                    }
                     if let name = responseJson["name"].string {
                         self.restaurantLabel.text = name
                     }
@@ -73,7 +96,7 @@ class RestaurantViewController: UIViewController, CLLocationManagerDelegate {
                         }
                         
                     }
-
+                    
                     if let isClosed = responseJson["is_closed"].bool {
                         if isClosed {
                             self.hoursLabel.text = "Closed"

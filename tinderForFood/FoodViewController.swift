@@ -36,6 +36,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     var loadedBusinesses: [Business] = []
     var accessToken: String?
     var imageCache = [String : UIImage]()
+    var offsetCounter = 0
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -50,12 +51,6 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
         
-        
-        // TODO: Callbacks
-        //        addRestaurant()
-        //        deleteRestaurant()
-        //        getRestaurants()
-        
         // Koloda set up
         kolodaView.alphaValueSemiTransparent = kolodaAlphaValueSemiTransparent
         kolodaView.countOfVisibleCards = kolodaCountOfVisibleCards
@@ -68,7 +63,8 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if self.location == nil {
             self.location = locations[0] as CLLocation
-            findNearbyRestaurants()
+//            findNearbyRestaurants()
+            findNearbyRestaurantWithOffset()
         }
     }
     
@@ -83,7 +79,6 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                 let lat = String(location.coordinate.latitude)
                 let long = String(location.coordinate.longitude)
                 let params = ["access_token": accessToken!, "latitude": lat, "longitude": long]
-                print("json params: \(params)")
                 loginViewController.makeJsonCall("users/findrestaurants", params: params) { responseCode, responseJson, error in
                     print("response code is \(responseCode)")
                     //print("response json is \(responseJson)")
@@ -96,6 +91,30 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
         } else {
             print("locationManager.location is nil: \(self.location)")
         }
+    }
+    
+    func findNearbyRestaurantWithOffset() {
+        if self.location != nil {
+            if accessToken != nil {
+                let lat = String(location.coordinate.latitude)
+                let long = String(location.coordinate.longitude)
+                let params = ["access_token": accessToken!, "latitude": lat, "longitude": long, "offset": "20"]
+                print("json params: \(params)")
+                loginViewController.makeJsonCall("users/findRestaurantsOffset", params: params) { responseCode, responseJson, error in
+                    print("response code is \(responseCode)")
+                    //print("response json is \(responseJson)")
+                    print("response error is \(error)")
+                    self.loadedBusinesses = [Business]()
+                    print("LOADED: \(self.loadedBusinesses)")
+                    self.loadRestaurants(responseJson)
+                }
+            } else {
+                print("accessToken is nil")
+            }
+        } else {
+            print("locationManager.location is nil: \(self.location)")
+        }
+
     }
     
     func loadRestaurants(restaurants: JSON) {
@@ -200,7 +219,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
                 if let img = imageCache[urlString] {
                     print("CACHED")
 //                    imageView.image = img
-                    kolodaView?.swipe(SwipeResultDirection.Right)
+                    self.kolodaView?.swipe(SwipeResultDirection.Right)
                 }
                 else {
                     let session = NSURLSession.sharedSession()
@@ -240,6 +259,7 @@ class FoodViewController: UIViewController, KolodaViewDataSource, KolodaViewDele
     func kolodaDidRunOutOfCards(koloda: KolodaView) {
         //Example: reloading
         kolodaView.resetCurrentCardNumber()
+        findNearbyRestaurantWithOffset()
     }
     
     func kolodaDidSelectCardAtIndex(koloda: KolodaView, index: UInt) {
